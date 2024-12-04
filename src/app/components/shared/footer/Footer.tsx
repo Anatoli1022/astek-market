@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
         <div className='relative mt-44 pt-8'>
           <Image src={line} alt='' className='absolute top-0 w-full' loading='lazy' aria-hidden='true' />
-          <div className='flex justify-between'>
+          <div className='flex items-center justify-between'>
             <p className='text-xs text-white'>Ⓒ 2024 by CycleDev, все права защищены</p>
             <div className='flex w-full max-w-lg justify-between'>
               <span className='text-xs text-white'>Красноярск. Ул. Вавилова </span>
