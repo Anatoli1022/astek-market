@@ -5,6 +5,9 @@ import line from "@/app/assets/lineHeader.svg";
 import logo from "@/app/assets/logo.svg";
 import shopping from "@/app/assets/shopping.svg";
 import user from "@/app/assets/user.svg";
+
+import ListNavigation from "./components/ListNavigation";
+
 const Header = () => {
   return (
     <header className='px-5 pt-7'>
@@ -15,28 +18,7 @@ const Header = () => {
             <Image src={logo} alt='' loading='eager' aria-hidden='true' />
             <span className='text-2xl'>Astek</span>
           </Link>
-          <ul className='flex w-full max-w-lg items-center gap-x-12'>
-            <li>
-              <Link href='/aboutCompany' className='opacity-30'>
-                О компании
-              </Link>
-            </li>
-            <li>
-              <Link href='/portfolio' className='opacity-30'>
-                Портфолио
-              </Link>
-            </li>
-            <li>
-              <Link href='/services' className='opacity-30'>
-                Услуги
-              </Link>
-            </li>
-            <li>
-              <Link href='/contacts' className='opacity-30'>
-                Контакты
-              </Link>
-            </li>
-          </ul>
+          <ListNavigation />
           <div className='flex items-center gap-x-2.5'>
             <span className='text-xs text-black/30'>Красноярск</span>
             <button className='rounded-md bg-white p-2.5 shadow-md'>
