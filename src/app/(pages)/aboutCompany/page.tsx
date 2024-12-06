@@ -1,4 +1,4 @@
-// import Brand from "@/app/components/pages/aboutCompany/brand/Brand";
+import Brand from "@/app/components/pages/aboutCompany/brand/Brand";
 import Hero from "@/app/components/pages/aboutCompany/hero/Hero";
 import HowWeWork from "@/app/components/pages/aboutCompany/howWeWork/HowWeWork";
 import Application from "@/app/components/shared/application/Application";
@@ -9,7 +9,7 @@ const page = () => {
   return (
     <>
       <Hero />
-      {/* <Brand /> */}
+      <Brand />
       <HowWeWork />
       <Approach />
       <TypesOfServices />

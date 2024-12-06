@@ -1,0 +1,14 @@
+.progress {
+  animation: 3.4s linear slide;
+  background: black;
+  opacity: 0.5;
+}
+
+@keyframes slide {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
