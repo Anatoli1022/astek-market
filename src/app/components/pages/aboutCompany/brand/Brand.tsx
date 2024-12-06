@@ -30,11 +30,8 @@ const Brand = () => {
           <SwiperSlide key={index}>
             <div className='relative'>
               <div className='absolute left-16 top-16 max-w-[534px] bg-white p-4'>
-                <h2 className='text-4xl'>Повышение узнаваемости бренда в каждом уголке России</h2>
-                <p className='mt-24 text-sm'>
-                  Мы создаем эффективные рекламные инструменты для крупного, среднего и малого бизнеса.
-                </p>
-
+                <h2 className='text-4xl'>{item.title}</h2>
+                <p className='mt-24 text-sm'>{item.text}</p>
                 <div className='mt-2.5 flex gap-x-2.5'>
                   {data.map((_, indexProgress) => (
                     <div
