@@ -1,11 +1,22 @@
-import Application from "@/app/components/shared/application/Application";
+import { SliceZone } from "@prismicio/react";
+import { Metadata } from "next";
 
-const page = () => {
-  return (
-    <>
-      <Application />
-    </>
-  );
-};
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
 
-export default page;
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("services");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("services");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}

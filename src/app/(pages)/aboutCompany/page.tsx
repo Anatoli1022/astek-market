@@ -1,21 +1,31 @@
-import Brand from "@/app/components/pages/aboutCompany/brand/Brand";
-import Hero from "@/app/components/pages/aboutCompany/hero/Hero";
-import HowWeWork from "@/app/components/pages/aboutCompany/howWeWork/HowWeWork";
-import Application from "@/app/components/shared/application/Application";
-import Approach from "@/app/components/shared/approach/Approach";
-import TypesOfServices from "@/app/components/shared/typesOfServices/TypesOfServices";
+{
+  /* <Hero />
 
-const page = () => {
-  return (
-    <>
-      <Hero />
-      <Brand />
-      <HowWeWork />
-      <Approach />
-      <TypesOfServices />
-      <Application />
-    </>
-  );
-};
+<HowWeWork />
+<Approach />
+<TypesOfServices />
+ */
+}
 
-export default page;
+import { SliceZone } from "@prismicio/react";
+import { Metadata } from "next";
+
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("aboutcompany");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("aboutcompany");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}

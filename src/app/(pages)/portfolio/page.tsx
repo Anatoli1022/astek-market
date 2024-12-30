@@ -1,13 +1,35 @@
-import Application from "@/app/components/shared/application/Application";
-import TypesOfServices from "@/app/components/shared/typesOfServices/TypesOfServices";
+// import TypesOfServices from "@/app/components/shared/typesOfServices/TypesOfServices";
 
-const page = () => {
-  return (
-    <>
-      <TypesOfServices />
-      <Application />
-    </>
-  );
-};
+// const page = () => {
+//   return (
+//     <>
+//       <TypesOfServices />
 
-export default page;
+//     </>
+//   );
+// };
+
+// export default page;
+
+import { SliceZone } from "@prismicio/react";
+import { Metadata } from "next";
+
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("portfolio");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("portfolio");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}

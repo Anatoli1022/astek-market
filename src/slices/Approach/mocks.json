@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco velit id sit fugiat dolor cupidatat dolor adipisicing nostrud eu non et commodo non. Sint velit labore eu ex laborum amet. Ipsum sint nisi nostrud ad aute aliqua qui ad mollit reprehenderit labore proident adipisicing esse deserunt."
+						}
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Various"
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
