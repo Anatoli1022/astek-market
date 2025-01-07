@@ -1,0 +1,50 @@
+{
+  "id": "get_print",
+  "type": "SharedSlice",
+  "name": "GetPrint",
+  "description": "GetPrint",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "У меня есть дизайн  ",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "title_text": {
+          "type": "Text",
+          "config": {
+            "label": "title_text",
+            "placeholder": "хочу заказать печать"
+          }
+        },
+        "buttontext": {
+          "type": "Text",
+          "config": {
+            "label": "buttonText",
+            "placeholder": "Свяжитесь со мной"
+          }
+        },
+        "arrow": {
+          "type": "Image",
+          "config": {
+            "label": "arrow",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

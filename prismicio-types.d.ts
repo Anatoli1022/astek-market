@@ -4,7 +4,12 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutcompanyDocumentDataSlicesSlice = ImplementationSlice | ApproachSlice | ApplicationSlice | BrandSlice;
+type AboutcompanyDocumentDataSlicesSlice =
+  | HowWeWorkSlice
+  | ImplementationSlice
+  | ApproachSlice
+  | ApplicationSlice
+  | BrandSlice;
 
 /**
  * Content for AboutCompany documents
@@ -143,7 +148,7 @@ export type ContactDocument<Lang extends string = string> = prismic.PrismicDocum
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice = ApplicationSlice | ApproachSlice;
+type HomeDocumentDataSlicesSlice = GetPrintSlice | ApplicationSlice | ApproachSlice;
 
 /**
  * Content for Home documents
@@ -729,6 +734,185 @@ type BrandSliceVariation = BrandSliceDefault;
 export type BrandSlice = prismic.SharedSlice<"brand", BrandSliceVariation>;
 
 /**
+ * Primary content in *GetPrint → Default → Primary*
+ */
+export interface GetPrintSliceDefaultPrimary {
+  /**
+   * title field in *GetPrint → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: У меня есть дизайн
+   * - **API ID Path**: get_print.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * title_text field in *GetPrint → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: хочу заказать печать
+   * - **API ID Path**: get_print.default.primary.title_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title_text: prismic.KeyTextField;
+
+  /**
+   * buttonText field in *GetPrint → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Свяжитесь со мной
+   * - **API ID Path**: get_print.default.primary.buttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttontext: prismic.KeyTextField;
+
+  /**
+   * arrow field in *GetPrint → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_print.default.primary.arrow
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for GetPrint Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GetPrintSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GetPrintSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GetPrint*
+ */
+type GetPrintSliceVariation = GetPrintSliceDefault;
+
+/**
+ * GetPrint Shared Slice
+ *
+ * - **API ID**: `get_print`
+ * - **Description**: GetPrint
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GetPrintSlice = prismic.SharedSlice<"get_print", GetPrintSliceVariation>;
+
+/**
+ * Item in *HowWeWork → Default → Primary → list*
+ */
+export interface HowWeWorkSliceDefaultPrimaryListItem {
+  /**
+   * text_teg field in *HowWeWork → Default → Primary → list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.list[].text_teg
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_teg: prismic.KeyTextField;
+
+  /**
+   * title_box field in *HowWeWork → Default → Primary → list*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.list[].title_box
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_box: prismic.RichTextField;
+
+  /**
+   * text_box field in *HowWeWork → Default → Primary → list*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.list[].text_box
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text_box: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *HowWeWork → Default → Primary*
+ */
+export interface HowWeWorkSliceDefaultPrimary {
+  /**
+   * title field in *HowWeWork → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * text_center field in *HowWeWork → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.text_center
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text_center: prismic.RichTextField;
+
+  /**
+   * image_box field in *HowWeWork → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.image_box
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_box: prismic.ImageField<never>;
+
+  /**
+   * list field in *HowWeWork → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<HowWeWorkSliceDefaultPrimaryListItem>>;
+}
+
+/**
+ * Default variation for HowWeWork Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HowWeWorkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HowWeWorkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HowWeWork*
+ */
+type HowWeWorkSliceVariation = HowWeWorkSliceDefault;
+
+/**
+ * HowWeWork Shared Slice
+ *
+ * - **API ID**: `how_we_work`
+ * - **Description**: HowWeWork
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HowWeWorkSlice = prismic.SharedSlice<"how_we_work", HowWeWorkSliceVariation>;
+
+/**
  * Item in *Implementation → Default → Primary → list*
  */
 export interface ImplementationSliceDefaultPrimaryListItem {
@@ -833,31 +1017,12 @@ declare module "@prismicio/client" {
       AboutcompanyDocument,
       AboutcompanyDocumentData,
       AboutcompanyDocumentDataSlicesSlice,
-      AllDocumentTypes,
-      ApplicationSlice,
-      ApplicationSliceDefault,
-      ApplicationSliceDefaultPrimary,
-      ApplicationSliceVariation,
-      ApproachSlice,
-      ApproachSliceDefault,
-      ApproachSliceDefaultPrimary,
-      ApproachSliceVariation,
-      BrandSlice,
-      BrandSliceDefault,
-      BrandSliceDefaultPrimary,
-      BrandSliceDefaultPrimaryListItem,
-      BrandSliceVariation,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
-      ImplementationSlice,
-      ImplementationSliceDefault,
-      ImplementationSliceDefaultPrimary,
-      ImplementationSliceDefaultPrimaryListItem,
-      ImplementationSliceVariation,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataListItem,
@@ -871,6 +1036,34 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
+      AllDocumentTypes,
+      ApplicationSlice,
+      ApplicationSliceDefaultPrimary,
+      ApplicationSliceVariation,
+      ApplicationSliceDefault,
+      ApproachSlice,
+      ApproachSliceDefaultPrimary,
+      ApproachSliceVariation,
+      ApproachSliceDefault,
+      BrandSlice,
+      BrandSliceDefaultPrimaryListItem,
+      BrandSliceDefaultPrimary,
+      BrandSliceVariation,
+      BrandSliceDefault,
+      GetPrintSlice,
+      GetPrintSliceDefaultPrimary,
+      GetPrintSliceVariation,
+      GetPrintSliceDefault,
+      HowWeWorkSlice,
+      HowWeWorkSliceDefaultPrimaryListItem,
+      HowWeWorkSliceDefaultPrimary,
+      HowWeWorkSliceVariation,
+      HowWeWorkSliceDefault,
+      ImplementationSlice,
+      ImplementationSliceDefaultPrimaryListItem,
+      ImplementationSliceDefaultPrimary,
+      ImplementationSliceVariation,
+      ImplementationSliceDefault,
     };
   }
 }

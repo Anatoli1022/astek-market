@@ -6,5 +6,7 @@ export const components = {
   application: dynamic(() => import("./Application")),
   approach: dynamic(() => import("./Approach")),
   brand: dynamic(() => import("./Brand")),
+  get_print: dynamic(() => import("./GetPrint")),
+  how_we_work: dynamic(() => import("./HowWeWork")),
   implementation: dynamic(() => import("./Implementation")),
 };
