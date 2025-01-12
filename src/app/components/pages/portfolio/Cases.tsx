@@ -50,7 +50,6 @@ const Cases = () => {
   //     }
   //   };
 
-  console.log(posts);
 
   return (
     <section className='mt-16 grid grid-cols-2 gap-2.5'>

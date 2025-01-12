@@ -1,5 +1,4 @@
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { Content } from "@prismicio/client";
 import arrowGray from "@/app/assets/arrow-gray.svg";

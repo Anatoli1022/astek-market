@@ -448,6 +448,17 @@ type PortfolioDocumentDataSlicesSlice = ApplicationSlice;
  */
 interface PortfolioDocumentData {
   /**
+   * title field in *portfolio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
    * Slice Zone field in *portfolio*
    *
    * - **Field Type**: Slice Zone

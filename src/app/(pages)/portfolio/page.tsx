@@ -13,7 +13,7 @@
 
 import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
-
+import { PrismicText } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Cases from "@/app/components/pages/portfolio/Cases";
@@ -24,6 +24,9 @@ export default async function Page() {
 
   return (
     <>
+      <h1 className='max-w-4xl text-6xl'>
+        <PrismicText field={page.data.title} />
+      </h1>
       <Cases />
       <SliceZone slices={page.data.slices} components={components} />
     </>
