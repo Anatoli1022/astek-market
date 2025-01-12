@@ -37,7 +37,6 @@ const Header = async () => {
             })}
           </ul>
           <div className='flex items-center gap-x-2.5'>
-            <span className='text-xs text-black/30'>Красноярск</span>
             <button className='rounded-md bg-white p-2.5 shadow-md'>
               <Image src={shopping} alt='' loading='eager' aria-hidden='true' />
             </button>

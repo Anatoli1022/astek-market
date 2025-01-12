@@ -84,6 +84,154 @@ export type AboutcompanyDocument<Lang extends string = string> = prismic.Prismic
   Lang
 >;
 
+/**
+ * Item in *Cases → list*
+ */
+export interface CaseDocumentDataListItem {
+  /**
+   * item title field in *Cases → list*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.list[].list_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  list_title: prismic.RichTextField;
+
+  /**
+   * item_text field in *Cases → list*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.list[].list_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  list_text: prismic.RichTextField;
+}
+
+/**
+ * Item in *Cases → list_images*
+ */
+export interface CaseDocumentDataListImagesItem {
+  /**
+   * item_image field in *Cases → list_images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.list_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+type CaseDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Cases documents
+ */
+interface CaseDocumentData {
+  /**
+   * title field in *Cases*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * main image field in *Cases*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.main_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * list field in *Cases*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<CaseDocumentDataListItem>>;
+
+  /**
+   * list_images field in *Cases*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.list_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_images: prismic.GroupField<Simplify<CaseDocumentDataListImagesItem>>;
+
+  /**
+   * Slice Zone field in *Cases*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CaseDocumentDataSlicesSlice> /**
+   * Meta Title field in *Cases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: case.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Cases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: case.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Cases*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Cases document from Prismic
+ *
+ * - **API ID**: `case`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CaseDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+  Simplify<CaseDocumentData>,
+  "case",
+  Lang
+>;
+
 type ContactDocumentDataSlicesSlice = ApplicationSlice;
 
 /**
@@ -509,6 +657,7 @@ export type ServicesDocument<Lang extends string = string> = prismic.PrismicDocu
 
 export type AllDocumentTypes =
   | AboutcompanyDocument
+  | CaseDocument
   | ContactDocument
   | HomeDocument
   | NavigationDocument
@@ -1017,40 +1166,17 @@ declare module "@prismicio/client" {
       AboutcompanyDocument,
       AboutcompanyDocumentData,
       AboutcompanyDocumentDataSlicesSlice,
-      AllDocumentTypes,
-      ApplicationSlice,
-      ApplicationSliceDefault,
-      ApplicationSliceDefaultPrimary,
-      ApplicationSliceVariation,
-      ApproachSlice,
-      ApproachSliceDefault,
-      ApproachSliceDefaultPrimary,
-      ApproachSliceVariation,
-      BrandSlice,
-      BrandSliceDefault,
-      BrandSliceDefaultPrimary,
-      BrandSliceDefaultPrimaryListItem,
-      BrandSliceVariation,
+      CaseDocument,
+      CaseDocumentData,
+      CaseDocumentDataListItem,
+      CaseDocumentDataListImagesItem,
+      CaseDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
-      GetPrintSlice,
-      GetPrintSliceDefault,
-      GetPrintSliceDefaultPrimary,
-      GetPrintSliceVariation,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
-      HowWeWorkSlice,
-      HowWeWorkSliceDefault,
-      HowWeWorkSliceDefaultPrimary,
-      HowWeWorkSliceDefaultPrimaryListItem,
-      HowWeWorkSliceVariation,
-      ImplementationSlice,
-      ImplementationSliceDefault,
-      ImplementationSliceDefaultPrimary,
-      ImplementationSliceDefaultPrimaryListItem,
-      ImplementationSliceVariation,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataListItem,
@@ -1064,6 +1190,34 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
+      AllDocumentTypes,
+      ApplicationSlice,
+      ApplicationSliceDefaultPrimary,
+      ApplicationSliceVariation,
+      ApplicationSliceDefault,
+      ApproachSlice,
+      ApproachSliceDefaultPrimary,
+      ApproachSliceVariation,
+      ApproachSliceDefault,
+      BrandSlice,
+      BrandSliceDefaultPrimaryListItem,
+      BrandSliceDefaultPrimary,
+      BrandSliceVariation,
+      BrandSliceDefault,
+      GetPrintSlice,
+      GetPrintSliceDefaultPrimary,
+      GetPrintSliceVariation,
+      GetPrintSliceDefault,
+      HowWeWorkSlice,
+      HowWeWorkSliceDefaultPrimaryListItem,
+      HowWeWorkSliceDefaultPrimary,
+      HowWeWorkSliceVariation,
+      HowWeWorkSliceDefault,
+      ImplementationSlice,
+      ImplementationSliceDefaultPrimaryListItem,
+      ImplementationSliceDefaultPrimary,
+      ImplementationSliceVariation,
+      ImplementationSliceDefault,
     };
   }
 }
