@@ -1,13 +1,17 @@
 "use server";
+import * as prismic from "@prismicio/client";
+import {
+  PrismicNextImage,
+  // , PrismicNextLink
+} from "@prismicio/next";
+import { PrismicText } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
-import { PrismicText } from "@prismicio/react";
-import * as prismic from "@prismicio/client";
+
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { revalidatePath } from "next/cache";
+// import { SliceZone } from "@prismicio/react";
+// import { components } from "@/slices";
+// import { revalidatePath } from "next/cache";
 
 type Params = { uid: string };
 
@@ -32,11 +36,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function Page({ params }: { params: Params }) {
-  const revalidate = async (url: string) => {
-    // Mark this as async
-    "use server";
-    await revalidatePath(url, "page"); // Ensure revalidatePath is awaited
-  };
+  // const revalidate = async (url: string) => {
+  //   // Mark this as async
+  //   "use server";
+  //   await revalidatePath(url, "page"); // Ensure revalidatePath is awaited
+  // };
 
   const client = createClient();
 
@@ -49,8 +53,8 @@ export default async function Page({ params }: { params: Params }) {
       </h1>
 
       <ul className='mt-8 flex justify-between gap-x-5'>
-        {data.list.map((item) => (
-          <li>
+        {data.list.map((item, i) => (
+          <li key={i}>
             <h2 className='text-sm opacity-30'>
               <PrismicText field={item.list_title} />
             </h2>
@@ -62,8 +66,8 @@ export default async function Page({ params }: { params: Params }) {
       </ul>
 
       <ul className='mt-5 flex flex-wrap gap-x-2.5 gap-y-5'>
-        {data.list_images.map((item) => (
-          <li>
+        {data.list_images.map((item, i) => (
+          <li key={i}>
             <PrismicNextImage field={item.image} alt='' loading='eager' className='rounded-2xl' />
           </li>
         ))}
