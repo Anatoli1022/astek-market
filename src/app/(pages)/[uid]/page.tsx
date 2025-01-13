@@ -14,7 +14,7 @@ import { createClient } from "@/prismicio";
 
 type Params = { uid: string };
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const client = createClient();
   const { uid } = await params;
   // Здесь нужно убедиться, что параметры обрабатываются правильно.
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params }: { params: Promise<Params> }) {
   // const revalidate = async (url: string) => {
   //   // Mark this as async
   //   "use server";
