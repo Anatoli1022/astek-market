@@ -1,8 +1,9 @@
+import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicNextLink } from "@prismicio/next";
-import { Content } from "@prismicio/client";
-import arrowGray from "@/app/assets/arrow-gray.svg";
 import Image from "next/image";
+
+import arrowGray from "@/app/assets/arrow-gray.svg";
 
 export const CaseCard = ({ post }: { post: Content.CaseDocument }): JSX.Element => {
   const { data } = post;
@@ -10,8 +11,10 @@ export const CaseCard = ({ post }: { post: Content.CaseDocument }): JSX.Element 
     <PrismicNextLink document={post}>
       <div className='relative'>
         <div className='absolute left-10 top-10 flex gap-x-2.5'>
-          {post.tags.map((tag) => (
-            <span className='rounded-3xl bg-white px-2.5 py-1 text-sm'>{tag}</span>
+          {post.tags.map((tag, i) => (
+            <span key={i} className='rounded-3xl bg-white px-2.5 py-1 text-sm'>
+              {tag}
+            </span>
           ))}
         </div>
         <div className='absolute right-10 top-10 rounded-full bg-white p-2.5'>

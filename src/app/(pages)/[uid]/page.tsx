@@ -1,4 +1,3 @@
-"use server";
 import * as prismic from "@prismicio/client";
 import {
   PrismicNextImage,
@@ -17,9 +16,9 @@ type Params = { uid: string };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const client = createClient();
-
+  const { uid } = await params;
   // Здесь нужно убедиться, что параметры обрабатываются правильно.
-  const page = await client.getByUID("case", params.uid).catch(() => notFound());
+  const page = await client.getByUID("case", uid).catch(() => notFound());
 
   return {
     title: prismic.asText(page.data.title),
@@ -41,10 +40,10 @@ export default async function Page({ params }: { params: Params }) {
   //   "use server";
   //   await revalidatePath(url, "page"); // Ensure revalidatePath is awaited
   // };
-
+  const { uid } = await params;
   const client = createClient();
 
-  const page = await client.getByUID("case", params.uid).catch(() => notFound());
+  const page = await client.getByUID("case", uid).catch(() => notFound());
   const { data } = page;
   return (
     <section>
