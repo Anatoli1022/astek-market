@@ -1,0 +1,206 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Police"
+						}
+					}
+				]
+			},
+			"link_portfolio": {
+				"key": "031e4b52-a7fa-4706-8e67-8b29b8b52b16",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "factor"
+				}
+			},
+			"list_reviews": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"service_name",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Sit ipsum pariatur occaecat duis labore sint non exercitation ea fugiat. Excepteur dolor ex aliqua esse. Sit ex pariatur in sint."
+											}
+										}
+									]
+								}
+							],
+							[
+								"what_make_text",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Exercitation officia elit adipisicing labore ex excepteur minim aliqua reprehenderit duis dolore. Reprehenderit nostrud est occaecat do voluptate cillum qui adipisicing ad minim."
+											}
+										}
+									]
+								}
+							],
+							[
+								"direction_text",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aute commodo est id minim amet incididunt velit elit Lorem voluptate dolor est magna. Minim ullamco ex exercitation pariatur in nisi eiusmod adipisicing non."
+											}
+										}
+									]
+								}
+							],
+							[
+								"feedback_text",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident magna ipsum et consequat ea velit incididunt proident adipisicing aliqua. Tempor eiusmod ea occaecat veniam cupidatat et ullamco magna eiusmod dolore proident eiusmod."
+											}
+										}
+									]
+								}
+							],
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+										"width": 5616,
+										"height": 3744
+									},
+									"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+									"width": 5616,
+									"height": 3744,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"link_case",
+								{
+									"key": "da1fadf2-9b20-467e-8a76-d418206cc4e9",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "rubbed"
+									}
+								}
+							],
+							[
+								"link_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "naturally",
+									"type": "Text"
+								}
+							],
+							[
+								"client_text",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Id officia laboris officia aliqua excepteur cillum tempor mollit voluptate proident tempor. Ut aute sunt dolor sit ipsum fugiat elit aute qui consectetur. Cillum minim consectetur ipsum magna incididunt non consectetur sit nulla quis officia velit eu."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"arrow_link": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+				"width": 3456,
+				"height": 3456,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"link_portfolio_text": {
+				"__TYPE__": "FieldContent",
+				"value": "television",
+				"type": "Text"
+			},
+			"arrow_top": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
+					"width": 5000,
+					"height": 4613
+				},
+				"url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
+				"width": 5000,
+				"height": 4613,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

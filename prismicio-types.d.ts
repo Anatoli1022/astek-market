@@ -232,7 +232,7 @@ export type CaseDocument<Lang extends string = string> = prismic.PrismicDocument
   Lang
 >;
 
-type ContactDocumentDataSlicesSlice = ApplicationSlice;
+type ContactDocumentDataSlicesSlice = MapSlice | ApplicationSlice;
 
 /**
  * Content for Contact documents
@@ -296,7 +296,7 @@ export type ContactDocument<Lang extends string = string> = prismic.PrismicDocum
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice = GetPrintSlice | ApplicationSlice | ApproachSlice;
+type HomeDocumentDataSlicesSlice = ReviewsSlice | BannerSlice | GetPrintSlice | ApplicationSlice | ApproachSlice;
 
 /**
  * Content for Home documents
@@ -821,6 +821,74 @@ type ApproachSliceVariation = ApproachSliceDefault;
 export type ApproachSlice = prismic.SharedSlice<"approach", ApproachSliceVariation>;
 
 /**
+ * Primary content in *Banner → Default → Primary*
+ */
+export interface BannerSliceDefaultPrimary {
+  /**
+   * image field in *Banner → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link field in *Banner → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * arrow field in *Banner → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.default.primary.arrow
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow: prismic.ImageField<never>;
+
+  /**
+   * text_link field in *Banner → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.default.primary.text_link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_link: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Banner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BannerSliceDefault = prismic.SharedSliceVariation<"default", Simplify<BannerSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Banner*
+ */
+type BannerSliceVariation = BannerSliceDefault;
+
+/**
+ * Banner Shared Slice
+ *
+ * - **API ID**: `banner`
+ * - **Description**: Banner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BannerSlice = prismic.SharedSlice<"banner", BannerSliceVariation>;
+
+/**
  * Item in *Brand → Default → Primary → list*
  */
 export interface BrandSliceDefaultPrimaryListItem {
@@ -1159,6 +1227,307 @@ type ImplementationSliceVariation = ImplementationSliceDefault;
  */
 export type ImplementationSlice = prismic.SharedSlice<"implementation", ImplementationSliceVariation>;
 
+/**
+ * Primary content in *Map → Default → Primary*
+ */
+export interface MapSliceDefaultPrimary {
+  /**
+   * map field in *Map → Default → Primary*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.map
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  map: prismic.GeoPointField;
+
+  /**
+   * adress field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.adress
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  adress: prismic.KeyTextField;
+
+  /**
+   * text field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * mail field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.mail
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  mail: prismic.LinkField;
+
+  /**
+   * text_mail field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.text_mail
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_mail: prismic.KeyTextField;
+
+  /**
+   * text_problem field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.text_problem
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_problem: prismic.KeyTextField;
+
+  /**
+   * link_phone field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.link_phone
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_phone: prismic.LinkField;
+
+  /**
+   * text_phone field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.text_phone
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_phone: prismic.KeyTextField;
+
+  /**
+   * time_work field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.time_work
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  time_work: prismic.KeyTextField;
+
+  /**
+   * green_arrow field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.green_arrow
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  green_arrow: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Map Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSliceDefault = prismic.SharedSliceVariation<"default", Simplify<MapSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Map*
+ */
+type MapSliceVariation = MapSliceDefault;
+
+/**
+ * Map Shared Slice
+ *
+ * - **API ID**: `map`
+ * - **Description**: Map
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSlice = prismic.SharedSlice<"map", MapSliceVariation>;
+
+/**
+ * Item in *Reviews → Default → Primary → list_reviews*
+ */
+export interface ReviewsSliceDefaultPrimaryListReviewsItem {
+  /**
+   * client_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].client_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  client_text: prismic.RichTextField;
+
+  /**
+   * service_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].service_name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service_name: prismic.RichTextField;
+
+  /**
+   * what_make_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].what_make_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  what_make_text: prismic.RichTextField;
+
+  /**
+   * direction_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].direction_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  direction_text: prismic.RichTextField;
+
+  /**
+   * feedback_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].feedback_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  feedback_text: prismic.RichTextField;
+
+  /**
+   * image field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link_case field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].link_case
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_case: prismic.LinkField;
+
+  /**
+   * link_text field in *Reviews → Default → Primary → list_reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Reviews → Default → Primary*
+ */
+export interface ReviewsSliceDefaultPrimary {
+  /**
+   * title field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * link_portfolio field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.link_portfolio
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_portfolio: prismic.LinkField;
+
+  /**
+   * arrow_link field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.arrow_link
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow_link: prismic.ImageField<never>;
+
+  /**
+   * link_portfolio_text field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.link_portfolio_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_portfolio_text: prismic.KeyTextField;
+
+  /**
+   * arrow_top field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.arrow_top
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow_top: prismic.ImageField<never>;
+
+  /**
+   * list_reviews field in *Reviews → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.default.primary.list_reviews[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_reviews: prismic.GroupField<Simplify<ReviewsSliceDefaultPrimaryListReviewsItem>>;
+}
+
+/**
+ * Default variation for Reviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReviewsSliceDefault = prismic.SharedSliceVariation<"default", Simplify<ReviewsSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Reviews*
+ */
+type ReviewsSliceVariation = ReviewsSliceDefault;
+
+/**
+ * Reviews Shared Slice
+ *
+ * - **API ID**: `reviews`
+ * - **Description**: Reviews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReviewsSlice = prismic.SharedSlice<"reviews", ReviewsSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -1177,45 +1546,17 @@ declare module "@prismicio/client" {
       AboutcompanyDocument,
       AboutcompanyDocumentData,
       AboutcompanyDocumentDataSlicesSlice,
-      AllDocumentTypes,
-      ApplicationSlice,
-      ApplicationSliceDefault,
-      ApplicationSliceDefaultPrimary,
-      ApplicationSliceVariation,
-      ApproachSlice,
-      ApproachSliceDefault,
-      ApproachSliceDefaultPrimary,
-      ApproachSliceVariation,
-      BrandSlice,
-      BrandSliceDefault,
-      BrandSliceDefaultPrimary,
-      BrandSliceDefaultPrimaryListItem,
-      BrandSliceVariation,
       CaseDocument,
       CaseDocumentData,
-      CaseDocumentDataListImagesItem,
       CaseDocumentDataListItem,
+      CaseDocumentDataListImagesItem,
       CaseDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
-      GetPrintSlice,
-      GetPrintSliceDefault,
-      GetPrintSliceDefaultPrimary,
-      GetPrintSliceVariation,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
-      HowWeWorkSlice,
-      HowWeWorkSliceDefault,
-      HowWeWorkSliceDefaultPrimary,
-      HowWeWorkSliceDefaultPrimaryListItem,
-      HowWeWorkSliceVariation,
-      ImplementationSlice,
-      ImplementationSliceDefault,
-      ImplementationSliceDefaultPrimary,
-      ImplementationSliceDefaultPrimaryListItem,
-      ImplementationSliceVariation,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataListItem,
@@ -1229,6 +1570,47 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
+      AllDocumentTypes,
+      ApplicationSlice,
+      ApplicationSliceDefaultPrimary,
+      ApplicationSliceVariation,
+      ApplicationSliceDefault,
+      ApproachSlice,
+      ApproachSliceDefaultPrimary,
+      ApproachSliceVariation,
+      ApproachSliceDefault,
+      BannerSlice,
+      BannerSliceDefaultPrimary,
+      BannerSliceVariation,
+      BannerSliceDefault,
+      BrandSlice,
+      BrandSliceDefaultPrimaryListItem,
+      BrandSliceDefaultPrimary,
+      BrandSliceVariation,
+      BrandSliceDefault,
+      GetPrintSlice,
+      GetPrintSliceDefaultPrimary,
+      GetPrintSliceVariation,
+      GetPrintSliceDefault,
+      HowWeWorkSlice,
+      HowWeWorkSliceDefaultPrimaryListItem,
+      HowWeWorkSliceDefaultPrimary,
+      HowWeWorkSliceVariation,
+      HowWeWorkSliceDefault,
+      ImplementationSlice,
+      ImplementationSliceDefaultPrimaryListItem,
+      ImplementationSliceDefaultPrimary,
+      ImplementationSliceVariation,
+      ImplementationSliceDefault,
+      MapSlice,
+      MapSliceDefaultPrimary,
+      MapSliceVariation,
+      MapSliceDefault,
+      ReviewsSlice,
+      ReviewsSliceDefaultPrimaryListReviewsItem,
+      ReviewsSliceDefaultPrimary,
+      ReviewsSliceVariation,
+      ReviewsSliceDefault,
     };
   }
 }

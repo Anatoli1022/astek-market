@@ -1,0 +1,87 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"map": {
+				"position": {
+					"lat": 48.8583736,
+					"lng": 2.2922926
+				},
+				"__TYPE__": "GeoPointContent"
+			},
+			"adress": {
+				"__TYPE__": "FieldContent",
+				"value": "path",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "drink",
+				"type": "Text"
+			},
+			"mail": {
+				"key": "4d2fb498-6e9c-4501-8e4d-db9984b71888",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "likely"
+				}
+			},
+			"text_phone": {
+				"__TYPE__": "FieldContent",
+				"value": "letter",
+				"type": "Text"
+			},
+			"link_phone": {
+				"key": "6438189c-a28a-4fe4-b696-8e4ee18292b0",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "company"
+				}
+			},
+			"time_work": {
+				"__TYPE__": "FieldContent",
+				"value": "captured",
+				"type": "Text"
+			},
+			"green_arrow": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+					"width": 3277,
+					"height": 4092
+				},
+				"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+				"width": 3277,
+				"height": 4092,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"text_mail": {
+				"__TYPE__": "FieldContent",
+				"value": "fully",
+				"type": "Text"
+			},
+			"text_problem": {
+				"__TYPE__": "FieldContent",
+				"value": "recent",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

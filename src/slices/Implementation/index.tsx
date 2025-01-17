@@ -11,20 +11,20 @@ export type ImplementationProps = SliceComponentProps<Content.ImplementationSlic
  * Component for "Implementation" Slices.
  */
 const Implementation = ({ slice }: ImplementationProps): JSX.Element => {
-  const { primary } = slice;
+  const { subtext, text, list } = slice.primary;
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='mt-72'>
       <span className='m-auto block max-w-52 text-[#1E1E1E] opacity-30'>
-        <PrismicText field={primary.text} />
+        <PrismicText field={text} />
       </span>
       <h2 className='m-auto max-w-[670px] text-center text-6xl'>
         Производство рекламы <span className='text-[#67698D]'>от идеи до реализации</span> для бизнеса
       </h2>
       <p className='m-auto mt-4 max-w-md text-center'>
-        <PrismicText field={primary.subtext} />
+        <PrismicText field={subtext} />
       </p>
       <ul className='mt-64 flex items-center justify-center gap-x-5'>
-        {primary.list.map((item) => {
+        {list.map((item) => {
           const { image } = item;
           return (
             <li key={image.id}>

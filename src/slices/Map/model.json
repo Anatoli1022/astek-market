@@ -1,0 +1,97 @@
+{
+  "id": "map",
+  "type": "SharedSlice",
+  "name": "Map",
+  "description": "Map",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "map": {
+          "type": "GeoPoint",
+          "config": {
+            "label": "map"
+          }
+        },
+        "adress": {
+          "type": "Text",
+          "config": {
+            "label": "adress",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "text",
+            "placeholder": ""
+          }
+        },
+        "mail": {
+          "type": "Link",
+          "config": {
+            "label": "mail",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "text_mail": {
+          "type": "Text",
+          "config": {
+            "label": "text_mail",
+            "placeholder": ""
+          }
+        },
+        "text_problem": {
+          "type": "Text",
+          "config": {
+            "label": "text_problem",
+            "placeholder": ""
+          }
+        },
+        "link_phone": {
+          "type": "Link",
+          "config": {
+            "label": "link_phone",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "text_phone": {
+          "type": "Text",
+          "config": {
+            "label": "text_phone",
+            "placeholder": ""
+          }
+        },
+        "time_work": {
+          "type": "Text",
+          "config": {
+            "label": "time_work",
+            "placeholder": ""
+          }
+        },
+        "green_arrow": {
+          "type": "Image",
+          "config": {
+            "label": "green_arrow",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

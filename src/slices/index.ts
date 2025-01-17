@@ -5,8 +5,11 @@ import dynamic from "next/dynamic";
 export const components = {
   application: dynamic(() => import("./Application")),
   approach: dynamic(() => import("./Approach")),
+  banner: dynamic(() => import("./Banner")),
   brand: dynamic(() => import("./Brand")),
   get_print: dynamic(() => import("./GetPrint")),
   how_we_work: dynamic(() => import("./HowWeWork")),
   implementation: dynamic(() => import("./Implementation")),
+  map: dynamic(() => import("./Map")),
+  reviews: dynamic(() => import("./Reviews")),
 };
