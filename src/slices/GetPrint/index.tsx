@@ -11,13 +11,16 @@ export type GetPrintProps = SliceComponentProps<Content.GetPrintSlice>;
  * Component for "GetPrint" Slices.
  */
 const GetPrint = ({ slice }: GetPrintProps): JSX.Element => {
+  const { title, title_text, buttontext, arrow, subtext } = slice.primary;
+
   return (
-    <section className='mt-28' data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
- 
-      <h1 className='m-auto max-w-2xl text-center text-6xl'>
-     <PrismicText field={slice.primary.title}/>
-      <span className='text-[#67698D]'>{slice.primary.title_text}</span>
-      </h1>
+    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+      <div className='m-auto max-w-2xl'>
+        <h1 className='text-center text-6xl'>
+          <PrismicText field={title} />
+        </h1>
+        <span className='block text-center text-6xl text-[#67698D]'>{title_text}</span>
+      </div>
       <form className='mt-10 flex items-center justify-center gap-x-2.5'>
         <input
           type='text'
@@ -30,10 +33,11 @@ const GetPrint = ({ slice }: GetPrintProps): JSX.Element => {
           placeholder='Телефон'
         />
         <button className='flex items-center gap-x-2.5 rounded-md bg-black px-8 py-5 text-white'>
-          <span className='text-sm'>{slice.primary.buttontext}</span>
-          <PrismicNextImage field={slice.primary.arrow}  loading='eager' alt='' aria-hidden='true' />
+          <span className='text-sm'>{buttontext}</span>
+          <PrismicNextImage field={arrow} loading='eager' alt='' aria-hidden='true' />
         </button>
       </form>
+      <p className='mt-5 text-center text-[#67698D]'>{subtext}</p>
     </section>
   );
 };

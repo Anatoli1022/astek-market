@@ -25,7 +25,7 @@ const Brand = ({ slice }: BrandProps): JSX.Element => {
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='relative mt-16'>
       <Swiper
         modules={[Autoplay]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
         loop={true}
         spaceBetween={30}
         slidesPerView={1}

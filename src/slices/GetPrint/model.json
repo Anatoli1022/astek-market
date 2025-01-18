@@ -42,6 +42,13 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "subtext": {
+          "type": "Text",
+          "config": {
+            "label": "subtext",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

@@ -21,7 +21,7 @@ const Cases = () => {
         try {
           const response = await client.getByType("case", {
             // orderings: [
-            //   { field: "my.blog_post.publication_date", direction: "desc" },
+            //   { field: "my.case.publication_date", direction: "desc" },
             //   { field: "document.first_publication_date", direction: "desc" },
             // ],
             fetchOptions: {

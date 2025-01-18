@@ -1004,6 +1004,16 @@ export interface GetPrintSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   arrow: prismic.ImageField<never>;
+
+  /**
+   * subtext field in *GetPrint → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: get_print.default.primary.subtext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtext: prismic.KeyTextField;
 }
 
 /**
@@ -1330,6 +1340,26 @@ export interface MapSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   green_arrow: prismic.ImageField<never>;
+
+  /**
+   * firm field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.firm
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  firm: prismic.KeyTextField;
+
+  /**
+   * number field in *Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: map.default.primary.number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  number: prismic.KeyTextField;
 }
 
 /**

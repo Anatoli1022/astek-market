@@ -89,6 +89,20 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "firm": {
+          "type": "Text",
+          "config": {
+            "label": "firm",
+            "placeholder": ""
+          }
+        },
+        "number": {
+          "type": "Text",
+          "config": {
+            "label": "number",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

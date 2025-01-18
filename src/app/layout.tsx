@@ -26,9 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body>
+      <body className='bg-[#F8F8F8]'>
         <Header />
-        <main className='m-auto max-w-[1920px] px-2.5'> {children}</main>
+        <main className='m-auto mt-44 max-w-[1920px] px-2.5'> {children}</main>
         <Footer />
       </body>
     </html>

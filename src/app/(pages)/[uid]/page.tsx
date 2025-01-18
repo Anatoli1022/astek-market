@@ -7,6 +7,7 @@ import { PrismicText } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import Similar from "@/app/components/pages/portfolio/Similar";
 import { createClient } from "@/prismicio";
 // import { SliceZone } from "@prismicio/react";
 // import { components } from "@/slices";
@@ -40,11 +41,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   //   "use server";
   //   await revalidatePath(url, "page"); // Ensure revalidatePath is awaited
   // };
+
   const { uid } = await params;
   const client = createClient();
-
   const page = await client.getByUID("case", uid).catch(() => notFound());
-  const { data } = page;
+  const { data, tags } = await page;
+
   return (
     <section>
       <h1 className='text-6xl'>
@@ -71,6 +73,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           </li>
         ))}
       </ul>
+      {tags.length > 0 && <Similar currentTags={tags} />}
     </section>
   );
 }

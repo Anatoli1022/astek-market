@@ -14,7 +14,7 @@ const Header = async () => {
   const { data } = navigation;
 
   return (
-    <header className='px-5 pt-7'>
+    <header className='fixed top-0 z-10 w-full bg-[#F8F8F8] px-5 pt-7'>
       <div className='relative pb-4'>
         <Image src={line} alt='' className='absolute bottom-0 w-full' loading='eager' aria-hidden='true' />
         <nav className='flex justify-between'>

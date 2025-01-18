@@ -24,7 +24,7 @@ export default async function Page() {
   const page = await client.getSingle("portfolio");
 
   return (
-    <div className='mt-16'>
+    <div>
       <h1 className='max-w-4xl text-6xl'>
         <PrismicText field={page.data.title} />
       </h1>

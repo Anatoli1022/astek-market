@@ -1,7 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-
 /**
  * Props for `Map`.
  */
@@ -11,14 +10,26 @@ export type MapProps = SliceComponentProps<Content.MapSlice>;
  * Component for "Map" Slices.
  */
 const Map = ({ slice }: MapProps): JSX.Element => {
-  const { map, adress, text, mail, text_mail, green_arrow, text_problem, link_phone, text_phone, time_work } =
-    slice.primary;
+  const {
+    map,
+    adress,
+    text,
+    mail,
+    text_mail,
+    green_arrow,
+    text_problem,
+    link_phone,
+    text_phone,
+    time_work,
+    firm,
+    number,
+  } = slice.primary;
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className='mt-16 flex justify-between gap-x-3'
+      className='flex justify-between gap-x-3'
     >
       <div>
         {map && (
@@ -49,29 +60,41 @@ const Map = ({ slice }: MapProps): JSX.Element => {
         )}
       </div>
 
-      <div className='max-w-4xl'>
-        <p className='text-5xl font-medium opacity-30'>{adress}</p>
-        <p className='text-5xl font-medium'>{text}</p>
-        <PrismicNextLink field={mail} className='text-5xl font-medium text-[#43A149]'>
-          <span>{text_mail}</span>
-          <PrismicNextImage field={green_arrow} className='inline' loading='eager' fallbackAlt='' aria-hidden='true' />
-        </PrismicNextLink>
+      <div className='flex max-w-4xl flex-col justify-between'>
         <div>
-          <p className='text-5xl font-medium'>
-            {text_problem}{" "}
-            <PrismicNextLink field={link_phone} className='text-5xl font-medium text-[#43A149]'>
-              <span>{text_phone}</span>
-              <PrismicNextImage
-                field={green_arrow}
-                className='inline'
-                loading='eager'
-                fallbackAlt=''
-                aria-hidden='true'
-              />
-            </PrismicNextLink>
-          </p>
+          <p className='text-5xl font-medium opacity-30'>{adress}</p>
+          <p className='text-5xl font-medium'>{text}</p>
+          <PrismicNextLink field={mail} className='text-5xl font-medium text-[#43A149]'>
+            <span>{text_mail}</span>
+            <PrismicNextImage
+              field={green_arrow}
+              className='inline'
+              loading='eager'
+              fallbackAlt=''
+              aria-hidden='true'
+            />
+          </PrismicNextLink>
+          <div>
+            <p className='text-5xl font-medium'>
+              {text_problem}{" "}
+              <PrismicNextLink field={link_phone} className='text-5xl font-medium text-[#43A149]'>
+                <span>{text_phone}</span>
+                <PrismicNextImage
+                  field={green_arrow}
+                  className='inline'
+                  loading='eager'
+                  fallbackAlt=''
+                  aria-hidden='true'
+                />
+              </PrismicNextLink>
+            </p>
+          </div>
+          <p className='mt-6 text-2xl font-medium'>{time_work}</p>
         </div>
-        <p className='mt-6 text-2xl font-medium'>{time_work}</p>
+        <div>
+          <p className='text-2xl opacity-30'>{firm}</p>
+          <p className='text-2xl opacity-30'>{number}</p>
+        </div>
       </div>
     </section>
   );
