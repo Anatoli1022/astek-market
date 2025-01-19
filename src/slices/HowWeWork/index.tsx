@@ -15,12 +15,12 @@ const HowWeWork = ({ slice }: HowWeWorkProps): JSX.Element => {
 
   return (
     <section className='mt-36' data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-      <div className='flex max-w-[1240px] items-center justify-between'>
+      <div className='flex max-w-[1240px] items-end justify-between'>
         <h2 className='text-6xl'>
           {" "}
           <PrismicText field={title} />
         </h2>
-        <p className='max-w-[320px] text-sm text-[#1E1E1E] opacity-30'>
+        <p className='max-w-[320px] text-sm text-[#1E1E1E]'>
           <PrismicText field={text_center} />
         </p>
       </div>

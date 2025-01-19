@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className='bg-[#F8F8F8]'>
+      <body className='bg-[#F8F8F8] font-medium'>
         <Header />
         <main className='m-auto mt-44 max-w-[1920px] px-2.5'> {children}</main>
         <Footer />

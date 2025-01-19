@@ -296,7 +296,13 @@ export type ContactDocument<Lang extends string = string> = prismic.PrismicDocum
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice = ReviewsSlice | BannerSlice | GetPrintSlice | ApplicationSlice | ApproachSlice;
+type HomeDocumentDataSlicesSlice =
+  | ProductsListSlice
+  | ReviewsSlice
+  | BannerSlice
+  | GetPrintSlice
+  | ApplicationSlice
+  | ApproachSlice;
 
 /**
  * Content for Home documents
@@ -1386,6 +1392,29 @@ type MapSliceVariation = MapSliceDefault;
 export type MapSlice = prismic.SharedSlice<"map", MapSliceVariation>;
 
 /**
+ * Default variation for ProductsList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductsListSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+
+/**
+ * Slice variation for *ProductsList*
+ */
+type ProductsListSliceVariation = ProductsListSliceDefault;
+
+/**
+ * ProductsList Shared Slice
+ *
+ * - **API ID**: `products_list`
+ * - **Description**: ProductsList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductsListSlice = prismic.SharedSlice<"products_list", ProductsListSliceVariation>;
+
+/**
  * Item in *Reviews → Default → Primary → list_reviews*
  */
 export interface ReviewsSliceDefaultPrimaryListReviewsItem {
@@ -1636,6 +1665,9 @@ declare module "@prismicio/client" {
       MapSliceDefaultPrimary,
       MapSliceVariation,
       MapSliceDefault,
+      ProductsListSlice,
+      ProductsListSliceVariation,
+      ProductsListSliceDefault,
       ReviewsSlice,
       ReviewsSliceDefaultPrimaryListReviewsItem,
       ReviewsSliceDefaultPrimary,

@@ -15,7 +15,7 @@ const Application = ({ slice }: ApplicationProps): JSX.Element => {
 
   return (
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='relative mt-28'>
-      <div className='absolute left-16 top-16 max-w-[334px]'>
+      <div className='absolute left-16 top-16 max-w-[340px]'>
         <h2 className='text-4xl text-white'>
           <PrismicText field={title} />
         </h2>

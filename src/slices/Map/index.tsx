@@ -62,9 +62,9 @@ const Map = ({ slice }: MapProps): JSX.Element => {
 
       <div className='flex max-w-4xl flex-col justify-between'>
         <div>
-          <p className='text-5xl font-medium opacity-30'>{adress}</p>
-          <p className='text-5xl font-medium'>{text}</p>
-          <PrismicNextLink field={mail} className='text-5xl font-medium text-[#43A149]'>
+          <p className='text-5xl opacity-30'>{adress}</p>
+          <p className='text-5xl'>{text}</p>
+          <PrismicNextLink field={mail} className='text-5xl text-[#43A149]'>
             <span>{text_mail}</span>
             <PrismicNextImage
               field={green_arrow}
@@ -75,9 +75,9 @@ const Map = ({ slice }: MapProps): JSX.Element => {
             />
           </PrismicNextLink>
           <div>
-            <p className='text-5xl font-medium'>
+            <p className='text-5xl'>
               {text_problem}{" "}
-              <PrismicNextLink field={link_phone} className='text-5xl font-medium text-[#43A149]'>
+              <PrismicNextLink field={link_phone} className='text-5xl text-[#43A149]'>
                 <span>{text_phone}</span>
                 <PrismicNextImage
                   field={green_arrow}
@@ -89,7 +89,7 @@ const Map = ({ slice }: MapProps): JSX.Element => {
               </PrismicNextLink>
             </p>
           </div>
-          <p className='mt-6 text-2xl font-medium'>{time_work}</p>
+          <p className='mt-6 text-2xl'>{time_work}</p>
         </div>
         <div>
           <p className='text-2xl opacity-30'>{firm}</p>

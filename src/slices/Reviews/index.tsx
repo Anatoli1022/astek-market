@@ -72,33 +72,33 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
                 <div className='flex justify-between'>
                   <ul className='flex flex-col gap-y-5'>
                     <li>
-                      <h4 className='text-xl font-medium opacity-30'>Клиент</h4>
-                      <p className='text-xl font-medium'>
+                      <h4 className='text-xl opacity-30'>Клиент</h4>
+                      <p className='text-xl'>
                         <PrismicText field={item.client_text} />
                       </p>
                     </li>
                     <li>
-                      <h4 className='text-xl font-medium opacity-30'>Услуга</h4>
-                      <p className='text-xl font-medium'>
+                      <h4 className='text-xl opacity-30'>Услуга</h4>
+                      <p className='text-xl'>
                         <PrismicText field={item.service_name} />
                       </p>
                     </li>
                     <li>
-                      <h4 className='text-xl font-medium opacity-30'>Что сделали</h4>
-                      <p className='text-xl font-medium'>
+                      <h4 className='text-xl opacity-30'>Что сделали</h4>
+                      <p className='text-xl'>
                         <PrismicText field={item.what_make_text} />
                       </p>
                     </li>
                     <li>
-                      <h4 className='text-xl font-medium opacity-30'>Ниша</h4>
-                      <p className='text-xl font-medium'>
+                      <h4 className='text-xl opacity-30'>Ниша</h4>
+                      <p className='text-xl'>
                         <PrismicText field={item.direction_text} />
                       </p>
                     </li>
                   </ul>
                   <div className='flex gap-x-5'>
                     <div className='max-w-[614px]'>
-                      <h4 className='text-xl font-medium opacity-30'>Отзыв</h4>
+                      <h4 className='text-xl opacity-30'>Отзыв</h4>
                       <p className='text-3xl'>
                         <PrismicText field={item.feedback_text} />
                       </p>

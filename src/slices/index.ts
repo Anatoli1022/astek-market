@@ -11,5 +11,6 @@ export const components = {
   how_we_work: dynamic(() => import("./HowWeWork")),
   implementation: dynamic(() => import("./Implementation")),
   map: dynamic(() => import("./Map")),
+  products_list: dynamic(() => import("./ProductsList")),
   reviews: dynamic(() => import("./Reviews")),
 };
