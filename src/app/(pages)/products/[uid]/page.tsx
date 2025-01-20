@@ -55,8 +55,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       <h1 className='text-6xl'>
         <PrismicText field={data.title} />
       </h1>
-
-      <PrismicNextImage field={data.product_image} />
+      aaa
+      <PrismicNextImage field={data.product_image} alt='' />
     </section>
   );
 }
