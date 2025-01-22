@@ -43,7 +43,17 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const category = await client.getByUID("product", uid);
 
-  console.log(category);
+  // console.log(category);
 
   return <section>{category.id}</section>;
+}
+
+export async function generateStaticParams() {
+  const client = createClient();
+
+  const pages = await client.getAllByType("product");
+
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
 }

@@ -53,7 +53,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     ],
   });
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <section>
@@ -68,12 +68,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   );
 }
 
-export async function generateStaticParams() {
-  const client = createClient();
+// export async function generateStaticParams() {
+//   const client = createClient();
 
-  const pages = await client.getAllByType("product");
+//   const pages = await client.getAllByType("product");
 
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+//   return pages.map((page) => {
+//     return { uid: page.uid };
+//   });
+// }

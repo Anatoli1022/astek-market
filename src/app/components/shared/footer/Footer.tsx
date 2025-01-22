@@ -4,13 +4,13 @@ import Link from "next/link";
 import line from "@/app/assets/line.svg";
 import logo from "@/app/assets/logo.svg";
 // import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { createClient } from "@/prismicio";
+// import { createClient } from "@/prismicio";
 
 const Footer = async () => {
-  const client = createClient();
-  const footer = await client.getSingle("footer");
-  const { data } = footer;
-  console.log(data);
+  // const client = createClient();
+  // const footer = await client.getSingle("footer");
+  // const { data } = footer;
+  // console.log(data);
 
   return (
     <footer className='mt-16 bg-[#C1C1C1] px-8 pb-8 pt-16'>
