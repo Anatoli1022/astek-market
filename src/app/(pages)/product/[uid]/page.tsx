@@ -1,9 +1,6 @@
-import * as prismic from "@prismicio/client";
-import {
-  PrismicNextImage,
-  // , PrismicNextLink
-} from "@prismicio/next";
-import { PrismicText } from "@prismicio/react";
+// import * as prismic from "@prismicio/client";
+// import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+// import { PrismicText } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -21,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const page = await client.getByUID("product", uid).catch(() => notFound());
 
   return {
-    title: prismic.asText(page.data.title),
+    // title: prismic.asText(page.data.title),
     description: page.data.meta_description,
     openGraph: {
       title: page.data.meta_title || undefined,
@@ -43,20 +40,10 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("product", uid).catch(() => notFound());
-  const {
-    data,
 
-    // tags
-  } = await page;
+  const category = await client.getByUID("product", uid);
 
-  return (
-    <section>
-      <h1 className='text-6xl'>
-        <PrismicText field={data.title} />
-      </h1>
-      aaa
-      <PrismicNextImage field={data.product_image} alt='' />
-    </section>
-  );
+  console.log(category);
+
+  return <section>{category.id}</section>;
 }

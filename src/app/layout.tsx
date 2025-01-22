@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import Footer from "./components/shared/footer/Footer";
 import Header from "./components/shared/header/Header";
@@ -28,7 +29,9 @@ export default function RootLayout({
     <html lang='ru'>
       <body className='bg-[#F8F8F8] font-medium'>
         <Header />
-        <main className='m-auto mt-44 max-w-[1920px] px-2.5'> {children}</main>
+        <Suspense fallback={<p>Loading...</p>}>
+          <main className='m-auto mt-44 max-w-[1920px] px-2.5'> {children}</main>
+        </Suspense>
         <Footer />
       </body>
     </html>

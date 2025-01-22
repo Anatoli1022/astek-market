@@ -1,0 +1,114 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo_text": {
+        "type": "Text",
+        "config": {
+          "label": "logo_text",
+          "placeholder": ""
+        }
+      },
+      "list_customer_information": {
+        "type": "Group",
+        "config": {
+          "label": "list customer Information",
+          "repeat": true,
+          "fields": {
+            "customer_information_link": {
+              "type": "Link",
+              "config": {
+                "label": "customer Information link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "list_social": {
+        "type": "Group",
+        "config": {
+          "label": "list_social",
+          "repeat": true,
+          "fields": {
+            "logo_social": {
+              "type": "Image",
+              "config": {
+                "label": "logo_social",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link_social": {
+              "type": "Link",
+              "config": {
+                "label": "link_social",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "list_contacts": {
+        "type": "Group",
+        "config": {
+          "label": "list_contacts",
+          "repeat": true,
+          "fields": {
+            "link_contacts": {
+              "type": "Link",
+              "config": {
+                "label": "link_contacts",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "list_apps": {
+        "type": "Group",
+        "config": {
+          "label": "list apps",
+          "repeat": true,
+          "fields": {
+            "link_app": {
+              "type": "Link",
+              "config": {
+                "label": "link app",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

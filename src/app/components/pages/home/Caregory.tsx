@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 
 import { createClient } from "@/prismicio";
 
-import { ProductCard } from "./ProductCard";
+import { CategoryCard } from "./CategoryCard";
 // import Pagination from "./Pagination";
 // import Skeleton from "./Skeleton";
 
-const Products = () => {
+const Category = () => {
   const client = createClient();
-  const [posts, setPosts] = useState<Content.ProductDocument[]>([]);
+  const [posts, setPosts] = useState<Content.CategoryDocument[]>([]);
   const [tags, setTags] = useState<string[]>([]); // Состояние для тегов
-  const [selectedTags, setSelectedTags] = useState<string[]>([]); // Состояние для выбранных тегов
+  const [selectedTags, setSelectedTags] = useState<string | boolean>(); // Состояние для выбранных тегов
   // const [totalPages, setTotalPages] = useState<number>(1);
   // const [thisPage, setThisPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
@@ -21,7 +21,7 @@ const Products = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await client.getByType("product", {
+        const response = await client.getByType("category", {
           // orderings: [
           //   { field: "my.case.publication_date", direction: "desc" },
           //   { field: "document.first_publication_date", direction: "desc" },
@@ -57,28 +57,27 @@ const Products = () => {
   }, []);
 
   // Фильтрация продуктов по выбранным тегам
-  const filteredPosts = selectedTags.length
-    ? posts.filter((post) => selectedTags.every((tag) => post.tags?.includes(tag)))
-    : posts;
+  const filteredPosts = selectedTags ? posts.filter((post) => post.tags.includes(selectedTags as string)) : posts;
 
   // Обработчик для выбора тегов
-  const handleTagClick = (tag: string) => {
-    setSelectedTags(
-      (prevTags) =>
-        prevTags.includes(tag)
-          ? prevTags.filter((t) => t !== tag) // Убираем тег из выбранных
-          : [...prevTags, tag], // Добавляем тег в выбранные
-    );
+  const handleTagClick = (tag: string | boolean) => {
+    setSelectedTags(tag);
   };
 
   return (
     <section className='mt-16'>
       {/* Отображаем кнопки для фильтрации по тегам */}
       <div className='mb-8 flex flex-wrap gap-2'>
+        <button
+          className={`rounded-full px-4 py-2 ${!selectedTags ? "bg-standartGreen text-white" : "border border-black/20 bg-inherit"}`}
+          onClick={() => handleTagClick(false)}
+        >
+          Все
+        </button>
         {tags.map((tag) => (
           <button
             key={tag}
-            className={`rounded-md border px-4 py-2 ${selectedTags.includes(tag) ? "bg-blue-500 text-white" : "bg-white"}`}
+            className={`rounded-full px-4 py-2 ${selectedTags === tag ? "bg-standartGreen text-white" : "border border-black/20 bg-inherit"}`}
             onClick={() => handleTagClick(tag)}
           >
             {tag}
@@ -94,7 +93,7 @@ const Products = () => {
             {/* <Skeleton /> */}
           </>
         ) : (
-          filteredPosts.map((post) => <ProductCard key={post.id} post={post} />)
+          filteredPosts.map((post) => <CategoryCard key={post.id} post={post} />)
         )}
       </div>
 
@@ -108,14 +107,4 @@ const Products = () => {
   );
 };
 
-export default Products;
-
-export async function generateStaticParams() {
-  const client = createClient();
-
-  const pages = await client.getAllByType("product");
-
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+export default Category;

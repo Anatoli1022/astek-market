@@ -1,26 +1,11 @@
 {
   "format": "page",
-  "id": "product",
-  "label": "product",
-  "repeatable": true,
+  "id": "productpage",
+  "label": "productPage",
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "type": "UID",
-        "config": {
-          "label": "UID"
-        }
-      },
-      "link": {
-        "type": "Link",
-        "config": {
-          "label": "link",
-          "select": "document",
-          "repeat": false,
-          "customtypes": ["category"]
-        }
-      },
       "text": {
         "type": "Text",
         "config": {

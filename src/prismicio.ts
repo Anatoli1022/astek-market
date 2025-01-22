@@ -43,9 +43,17 @@ const routes: prismic.ClientConfig["routes"] = [
     type: "case",
     path: "/portfolio/:uid",
   },
+  // {
+  //   type: "productpage",
+  //   path: "/products",
+  // },
+  {
+    type: "category",
+    path: "/category/:uid",
+  },
   {
     type: "product",
-    path: "/products/:uid",
+    path: "/product/:uid",
   },
 ];
 

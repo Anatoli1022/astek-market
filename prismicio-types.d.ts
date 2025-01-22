@@ -232,6 +232,48 @@ export type CaseDocument<Lang extends string = string> = prismic.PrismicDocument
   Lang
 >;
 
+/**
+ * Content for category documents
+ */
+interface CategoryDocumentData {
+  /**
+   * name field in *category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * image field in *category*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+  Simplify<CategoryDocumentData>,
+  "category",
+  Lang
+>;
+
 type ContactDocumentDataSlicesSlice = MapSlice | ApplicationSlice;
 
 /**
@@ -293,6 +335,162 @@ interface ContactDocumentData {
 export type ContactDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
   Simplify<ContactDocumentData>,
   "contact",
+  Lang
+>;
+
+/**
+ * Item in *footer → list customer Information*
+ */
+export interface FooterDocumentDataListCustomerInformationItem {
+  /**
+   * customer Information link field in *footer → list customer Information*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_customer_information[].customer_information_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  customer_information_link: prismic.LinkField;
+}
+
+/**
+ * Item in *footer → list_social*
+ */
+export interface FooterDocumentDataListSocialItem {
+  /**
+   * logo_social field in *footer → list_social*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_social[].logo_social
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_social: prismic.ImageField<never>;
+
+  /**
+   * link_social field in *footer → list_social*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_social[].link_social
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_social: prismic.LinkField;
+}
+
+/**
+ * Item in *footer → list_contacts*
+ */
+export interface FooterDocumentDataListContactsItem {
+  /**
+   * link_contacts field in *footer → list_contacts*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_contacts[].link_contacts
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_contacts: prismic.LinkField;
+}
+
+/**
+ * Item in *footer → list apps*
+ */
+export interface FooterDocumentDataListAppsItem {
+  /**
+   * link app field in *footer → list apps*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_apps[].link_app
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_app: prismic.LinkField;
+}
+
+/**
+ * Content for footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * logo field in *footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * logo_text field in *footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.logo_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  logo_text: prismic.KeyTextField;
+
+  /**
+   * list customer Information field in *footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_customer_information[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_customer_information: prismic.GroupField<Simplify<FooterDocumentDataListCustomerInformationItem>>;
+
+  /**
+   * list_social field in *footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_social[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_social: prismic.GroupField<Simplify<FooterDocumentDataListSocialItem>>;
+
+  /**
+   * list_contacts field in *footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_contacts[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_contacts: prismic.GroupField<Simplify<FooterDocumentDataListContactsItem>>;
+
+  /**
+   * list apps field in *footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.list_apps[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_apps: prismic.GroupField<Simplify<FooterDocumentDataListAppsItem>>;
+}
+
+/**
+ * footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<FooterDocumentData>,
+  "footer",
   Lang
 >;
 
@@ -381,8 +579,6 @@ export interface NavigationDocumentDataListItem {
   link: prismic.LinkField;
 }
 
-type NavigationDocumentDataSlicesSlice = never;
-
 /**
  * Content for navigation documents
  */
@@ -419,17 +615,6 @@ interface NavigationDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<never>;
-
-  /**
-   * Slice Zone field in *navigation*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
 }
 
 /**
@@ -529,26 +714,26 @@ type ProductDocumentDataSlicesSlice = never;
  */
 interface ProductDocumentData {
   /**
-   * title field in *product*
+   * link field in *product*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: product.title
+   * - **API ID Path**: product.link
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  title: prismic.RichTextField;
+  link: prismic.ContentRelationshipField<"category">;
 
   /**
-   * product image field in *product*
+   * text field in *product*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: product.product_image
+   * - **API ID Path**: product.text
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  product_image: prismic.ImageField<never>;
+  text: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *product*
@@ -605,6 +790,81 @@ interface ProductDocumentData {
 export type ProductDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
   Simplify<ProductDocumentData>,
   "product",
+  Lang
+>;
+
+type ProductpageDocumentDataSlicesSlice = never;
+
+/**
+ * Content for productPage documents
+ */
+interface ProductpageDocumentData {
+  /**
+   * text field in *productPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: productpage.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *productPage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: productpage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProductpageDocumentDataSlicesSlice> /**
+   * Meta Title field in *productPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: productpage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *productPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: productpage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *productPage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: productpage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * productPage document from Prismic
+ *
+ * - **API ID**: `productpage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductpageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<ProductpageDocumentData>,
+  "productpage",
   Lang
 >;
 
@@ -675,11 +935,14 @@ export type ServicesDocument<Lang extends string = string> = prismic.PrismicDocu
 export type AllDocumentTypes =
   | AboutcompanyDocument
   | CaseDocument
+  | CategoryDocument
   | ContactDocument
+  | FooterDocument
   | HomeDocument
   | NavigationDocument
   | PortfolioDocument
   | ProductDocument
+  | ProductpageDocument
   | ServicesDocument;
 
 /**
@@ -1610,22 +1873,32 @@ declare module "@prismicio/client" {
       CaseDocumentDataListItem,
       CaseDocumentDataListImagesItem,
       CaseDocumentDataSlicesSlice,
+      CategoryDocument,
+      CategoryDocumentData,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataListCustomerInformationItem,
+      FooterDocumentDataListSocialItem,
+      FooterDocumentDataListContactsItem,
+      FooterDocumentDataListAppsItem,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataListItem,
-      NavigationDocumentDataSlicesSlice,
       PortfolioDocument,
       PortfolioDocumentData,
       PortfolioDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
       ProductDocumentDataSlicesSlice,
+      ProductpageDocument,
+      ProductpageDocumentData,
+      ProductpageDocumentDataSlicesSlice,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
