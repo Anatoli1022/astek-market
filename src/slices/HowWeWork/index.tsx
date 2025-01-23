@@ -26,7 +26,7 @@ const HowWeWork = ({ slice }: HowWeWorkProps): JSX.Element => {
       </div>
       <ul className='mt-24 flex flex-wrap justify-center gap-2.5'>
         {list.map((item, index) => (
-          <div key={index} className='w-full max-w-[620px] rounded-[10px] bg-[#A6B8FF] p-7'>
+          <li key={index} className='w-full max-w-[620px] rounded-[10px] bg-[#A6B8FF] p-7'>
             <div className='flex items-center gap-x-2.5'>
               <div className='h-2.5 w-2.5 rounded-full bg-white'></div>
               <span className='text-sm text-white'>{item.text_teg}</span>
@@ -42,7 +42,7 @@ const HowWeWork = ({ slice }: HowWeWorkProps): JSX.Element => {
               {" "}
               <PrismicText field={item.text_box} />
             </p>
-          </div>
+          </li>
         ))}
       </ul>
     </section>

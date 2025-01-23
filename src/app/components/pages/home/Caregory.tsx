@@ -1,22 +1,21 @@
 "use client";
 
 import { Content } from "@prismicio/client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import plus from "@/app/assets/plus.svg";
 import { createClient } from "@/prismicio";
 
 import { CategoryCard } from "./CategoryCard";
-// import Pagination from "./Pagination";
-// import Skeleton from "./Skeleton";
 
 const Category = () => {
   const client = createClient();
   const [posts, setPosts] = useState<Content.CategoryDocument[]>([]);
   const [tags, setTags] = useState<string[]>([]); // Состояние для тегов
   const [selectedTags, setSelectedTags] = useState<string | boolean>(); // Состояние для выбранных тегов
-  // const [totalPages, setTotalPages] = useState<number>(1);
-  // const [thisPage, setThisPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [nextPage, setNextPage] = useState<string | null>(null);
+  // const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,28 +28,20 @@ const Category = () => {
           fetchOptions: {
             next: { revalidate: 3600 },
           },
-          pageSize: 8, // page: thisPage,
+          pageSize: 2,
         });
 
+        const tags = await client.getTags();
         setPosts(response.results);
-        // setTotalPages(response.total_pages);
-        // Получаем уникальные теги из всех продуктов
-        const allTags = response.results.reduce((acc: string[], product) => {
-          if (product.tags) {
-            product.tags.forEach((tag: string) => {
-              if (!acc.includes(tag)) {
-                acc.push(tag);
-              }
-            });
-          }
-          return acc;
-        }, []);
-        setTags(allTags);
+        setNextPage(response.next_page);
+
+        setTags(tags);
       } catch (error) {
         console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
       }
+      // finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchPosts();
@@ -62,6 +53,17 @@ const Category = () => {
   // Обработчик для выбора тегов
   const handleTagClick = (tag: string | boolean) => {
     setSelectedTags(tag);
+  };
+
+  // Функция для подгрузки дополнительных товаров
+  const loadMorePosts = async () => {
+    if (!nextPage) return;
+
+    const nextResponse = await fetch(nextPage);
+    const nextData = await nextResponse.json();
+
+    setPosts((prevPosts) => [...prevPosts, ...nextData.results]);
+    setNextPage(nextData.next_page); // Обновляем ссылку на следующую страницу
   };
 
   return (
@@ -85,24 +87,21 @@ const Category = () => {
         ))}
       </div>
 
-      <div className='grid grid-cols-3 gap-2.5'>
-        {loading ? (
-          <>
-            {/* <Skeleton /> */}
-            {/* <Skeleton /> */}
-            {/* <Skeleton /> */}
-          </>
-        ) : (
-          filteredPosts.map((post) => <CategoryCard key={post.id} post={post} />)
-        )}
-      </div>
+      <ul className='grid grid-cols-2 gap-2.5'>
+        {filteredPosts.map((post) => (
+          <li key={post.id}>
+            <CategoryCard post={post} />
+          </li>
+        ))}
+      </ul>
 
-      {/* <Pagination
-        handlePreviousPage={handlePreviousPage}
-        thisPage={thisPage}
-        totalPages={totalPages}
-        handleNextPage={handleNextPage}
-      /> */}
+      {nextPage && (
+        <div className='mt-10 text-center'>
+          <button onClick={loadMorePosts} className='rounded border p-2.5 shadow-lg'>
+            <Image src={plus} alt='' loading='lazy' aria-hidden='true' />
+          </button>
+        </div>
+      )}
     </section>
   );
 };

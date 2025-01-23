@@ -7,6 +7,7 @@ import arrowGray from "@/app/assets/arrow-gray.svg";
 
 export const CaseCard = ({ post }: { post: Content.CaseDocument }): JSX.Element => {
   const { data } = post;
+
   return (
     <PrismicNextLink document={post}>
       <div className='relative'>
@@ -20,14 +21,7 @@ export const CaseCard = ({ post }: { post: Content.CaseDocument }): JSX.Element 
         <div className='absolute right-10 top-10 rounded-full bg-white p-2.5'>
           <Image src={arrowGray} alt='' loading='eager' aria-hidden='true' />
         </div>
-        <PrismicNextImage
-          field={data.main_image}
-          sizes='100vw'
-          className='w-full rounded-2xl object-cover'
-          fallbackAlt=''
-          loading='eager'
-          priority
-        />
+        <PrismicNextImage field={data.main_image} className='w-full rounded-2xl object-cover' alt='' loading='lazy' />
       </div>
     </PrismicNextLink>
   );
