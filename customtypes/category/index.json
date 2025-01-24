@@ -26,6 +26,13 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "chapter": {
+        "type": "Text",
+        "config": {
+          "label": "chapter",
+          "placeholder": ""
+        }
       }
     }
   }

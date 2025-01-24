@@ -1,8 +1,9 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicNextLink } from "@prismicio/next";
-// import Image from "next/image";
-// import arrow from "@/app/assets/arrow.svg";
+import Image from "next/image";
+
+import arrow from "@/app/assets/arrow.svg";
 
 export const CategoryCard = ({ post }: { post: Content.CategoryDocument }): JSX.Element => {
   const { data } = post;
@@ -16,11 +17,10 @@ export const CategoryCard = ({ post }: { post: Content.CategoryDocument }): JSX.
               {tag}
             </span>
           ))}
-          <span className='rounded-3xl bg-white px-2.5 py-1 text-sm font-normal'>{data.name}</span>
         </div>
-        {/* <div className='absolute right-10 top-10 rounded-full bg-white p-2.5'>
+        <div className='absolute right-10 top-10 rounded-full bg-white p-2.5'>
           <Image src={arrow} alt='' loading='eager' aria-hidden='true' />
-        </div> */}
+        </div>
         <PrismicNextImage
           field={data.image}
           sizes='100vw'

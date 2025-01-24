@@ -257,6 +257,17 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * chapter field in *category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.chapter
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  chapter: prismic.KeyTextField;
 }
 
 /**
@@ -335,6 +346,52 @@ interface ContactDocumentData {
 export type ContactDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
   Simplify<ContactDocumentData>,
   "contact",
+  Lang
+>;
+
+/**
+ * Item in *filter → list*
+ */
+export interface FilterDocumentDataListItem {
+  /**
+   * item field in *filter → list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: filter.list[].item
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  item: prismic.KeyTextField;
+}
+
+/**
+ * Content for filter documents
+ */
+interface FilterDocumentData {
+  /**
+   * list field in *filter*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: filter.list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<FilterDocumentDataListItem>>;
+}
+
+/**
+ * filter document from Prismic
+ *
+ * - **API ID**: `filter`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FilterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<FilterDocumentData>,
+  "filter",
   Lang
 >;
 
@@ -937,6 +994,7 @@ export type AllDocumentTypes =
   | CaseDocument
   | CategoryDocument
   | ContactDocument
+  | FilterDocument
   | FooterDocument
   | HomeDocument
   | NavigationDocument
@@ -1878,6 +1936,9 @@ declare module "@prismicio/client" {
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
+      FilterDocument,
+      FilterDocumentData,
+      FilterDocumentDataListItem,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataListCustomerInformationItem,
