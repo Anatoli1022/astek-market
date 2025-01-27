@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        standartGreen:'#43A149'
+        standartGreen: "#43A149",
+        lightGray: "#44423D",
       },
     },
   },

@@ -3,9 +3,10 @@ import Image from "next/image";
 
 import line from "@/app/assets/lineHeader.svg";
 import shopping from "@/app/assets/shopping.svg";
-import user from "@/app/assets/user.svg";
+// import user from "@/app/assets/user.svg";
 import { createClient } from "@/prismicio";
 
+import Modal from "../modal/Modal";
 import ListNavigation from "./components/ListNavigation";
 
 const Header = async () => {
@@ -27,9 +28,9 @@ const Header = async () => {
             <button className='rounded-md bg-white p-2.5 shadow-md'>
               <Image src={shopping} alt='' loading='eager' aria-hidden='true' />
             </button>
-            <button className='rounded-md bg-white p-2.5 shadow-md'>
-              <Image src={user} alt='' loading='eager' aria-hidden='true' />
-            </button>
+
+            <Modal />
+            {/* <Image src={user} alt='' loading='eager' aria-hidden='true' /> */}
           </div>
         </nav>
       </div>
