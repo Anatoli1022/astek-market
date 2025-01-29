@@ -29,6 +29,7 @@ export default function RootLayout({
     <html lang='ru'>
       <body className='bg-[#F8F8F8] font-medium'>
         <Header />
+
         <Suspense fallback={<p>Loading...</p>}>
           <main className='m-auto mt-44 max-w-[1920px] px-2.5'> {children}</main>
         </Suspense>

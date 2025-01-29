@@ -1,34 +1,159 @@
-import React from "react";
+"use client";
+import { type User } from "@supabase/supabase-js";
+import { useCallback, useEffect, useState } from "react";
 
-const Profile = () => {
+import { createClientUser } from "@/app/utils/supabase/client";
+
+export default function Profile({ user }: { user: User | null }) {
+  const supabase = createClientUser();
+  const [loading, setLoading] = useState(true);
+  const [fio, setFio] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+  const [phone, setPhone] = useState<string | null>(null);
+  const [city, setCity] = useState<string | null>(null);
+  const [companyName, setCompanyName] = useState<string | null>(null);
+  const [companyActivity, setCompanyActivity] = useState<string | null>(null);
+
+  // Fetch the profile data
+  const getProfile = useCallback(async () => {
+    if (!user) return;
+    try {
+      setLoading(true);
+      const { data, error, status } = await supabase
+        .from("users")
+        .select("fio, email, phone, city, company_name, company_activity")
+        .eq("id", user?.id)
+        .single();
+      if (error && status !== 406) {
+        console.error(error);
+        throw error;
+      }
+      if (data) {
+        setFio(data.fio);
+        setEmail(data.email);
+        setPhone(data.phone);
+        setCity(data.city);
+        setCompanyName(data.company_name);
+        setCompanyActivity(data.company_activity);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      getProfile();
+    }
+  }, [user, getProfile]); // Добавляем getProfile в массив зависимостей
+
+  async function updateProfile({
+    fio,
+    email,
+    phone,
+    city,
+    companyName,
+    companyActivity,
+  }: {
+    fio: string | null;
+    email: string | null;
+    phone: string | null;
+    city: string | null;
+    companyName: string | null;
+    companyActivity: string | null;
+  }) {
+    try {
+      setLoading(true);
+      const { error } = await supabase.from("users").upsert({
+        id: user?.id as string,
+        fio: fio || "",
+        email: email || "",
+        phone: phone || "",
+        city: city || "",
+        company_name: companyName || "",
+        company_activity: companyActivity || "",
+        updated_at: new Date().toISOString(),
+      });
+      if (error) throw error;
+      alert("Profile updated!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Error updating the profile!");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleLogout = async () => {
+    await fetch("/api/signout", { method: "POST" });
+  };
+
   return (
-    <form action='' className='flex w-full flex-col gap-y-2.5'>
-      <input type='file' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <label className='text-sm font-medium opacity-40'>ФИО</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <div>
-        <input type='checkbox' /> <input type='checkbox' />
+    <div className='form-widget'>
+      <div className='flex w-full flex-col gap-y-2.5'>
+        <label className='text-sm font-medium opacity-40'>ФИО</label>
+        <input
+          value={fio || ""}
+          placeholder={fio || ""}
+          onChange={(e) => setFio(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <label className='text-sm font-medium opacity-40'>Почта</label>
+        <input
+          value={email || ""}
+          onChange={(e) => setEmail(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <label className='text-sm font-medium opacity-40'>Телефон</label>
+        <input
+          value={phone || ""}
+          onChange={(e) => setPhone(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <label className='text-sm font-medium opacity-40'>Город</label>
+        <input
+          value={city || ""}
+          onChange={(e) => setCity(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <label className='text-sm font-medium opacity-40'>Компания</label>
+        <input
+          value={companyName || ""}
+          onChange={(e) => setCompanyName(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <label className='text-sm font-medium opacity-40'>Деятельность компании</label>
+        <input
+          value={companyActivity || ""}
+          onChange={(e) => setCompanyActivity(e.target.value)}
+          type='text'
+          className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
+        />
+        <button
+          className='mt-7 block rounded-full bg-standartGreen px-4 py-1.5 text-white'
+          onClick={() => updateProfile({ fio, email, phone, city, companyName, companyActivity })}
+          disabled={loading}
+        >
+          {loading ? "Loading ..." : "Сохранить изменения"}
+        </button>
       </div>
-      <label className='text-sm font-medium opacity-40'>Почта</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <label className='text-sm font-medium opacity-40'>Телефон</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <label className='text-sm font-medium opacity-40'>Город</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <label className='text-sm font-medium opacity-40'>Улица</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-      <label className='text-sm font-medium opacity-40'>Дом</label>
-      <input type='text' className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm' name='' />
-
-      <button type='submit' className='mt-7 block rounded-full bg-standartGreen px-4 py-1.5 text-white'>
-        Сохранить изменения
-      </button>
-
-      <button type='button' className='mt-2.5 block rounded-full bg-standartGreen/30 px-4 py-1.5 text-standartGreen'>
-        Изменить пароль
-      </button>
-    </form>
+      <div>
+        <form
+          //  action='/auth/signout'  передаем на какой путь нас перевести req
+          method='post'
+        >
+          <button className='rounded-md bg-red-500 p-2.5 text-white shadow-md' onClick={handleLogout}>
+            Выйти
+          </button>
+        </form>
+      </div>
+    </div>
   );
-};
-
-export default Profile;
+}
