@@ -86,10 +86,6 @@ export default function Profile({ user }: { user: User | null }) {
     }
   }
 
-  const handleLogout = async () => {
-    await fetch("/api/signout", { method: "POST" });
-  };
-
   return (
     <div className='form-widget'>
       <div className='flex w-full flex-col gap-y-2.5'>
@@ -143,16 +139,6 @@ export default function Profile({ user }: { user: User | null }) {
         >
           {loading ? "Loading ..." : "Сохранить изменения"}
         </button>
-      </div>
-      <div>
-        <form
-          //  action='/auth/signout'  передаем на какой путь нас перевести req
-          method='post'
-        >
-          <button className='rounded-md bg-red-500 p-2.5 text-white shadow-md' onClick={handleLogout}>
-            Выйти
-          </button>
-        </form>
       </div>
     </div>
   );

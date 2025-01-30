@@ -10,6 +10,10 @@ interface ListLinks {
 }
 
 const ListLinks = ({ selectActiveTab, activeTab, user }: ListLinks) => {
+  const handleLogout = async () => {
+    await fetch("/api/signout", { method: "POST" });
+  };
+
   return (
     <div className='flex flex-col'>
       {!user ? ( // Если нет сессии, показываем кнопки логина и регистрации
@@ -71,6 +75,17 @@ const ListLinks = ({ selectActiveTab, activeTab, user }: ListLinks) => {
           >
             <Image src={mail} alt='' loading='lazy' aria-hidden='true' /> <span>Тех. поддержка</span>
           </button>
+
+          <div>
+            <form
+              //  action='/auth/signout'  передаем на какой путь нас перевести req
+              method='post'
+            >
+              <button className='rounded-md bg-red-500 p-2.5 text-white shadow-md' onClick={handleLogout}>
+                Выйти
+              </button>
+            </form>
+          </div>
         </>
       )}
     </div>

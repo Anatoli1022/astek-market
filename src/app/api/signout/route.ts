@@ -4,10 +4,9 @@ import { NextResponse } from "next/server";
 import { createServerUser } from "@/app/utils/supabase/server";
 
 export async function POST() {
-  //req
   const supabase = await createServerUser();
 
-  // Check if a user's logged in
+  // Проверяем, авторизован ли пользователь
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -16,14 +15,9 @@ export async function POST() {
     await supabase.auth.signOut();
   }
 
+  // Очищаем кэш и обновляем страницу
   revalidatePath("/", "layout");
-  return NextResponse.redirect(
-    new URL(
-      "/",
-      // , req.url
-    ),
-    {
-      status: 302,
-    },
-  );
+  return NextResponse.redirect(new URL("/", "/"), {
+    status: 302,
+  });
 }

@@ -19,6 +19,7 @@ const LoginForm = () => {
           name='password'
           placeholder='Пароль'
           required
+          minLength={6}
           className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
         />
         <button formAction={login} type='submit'>
@@ -30,18 +31,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-// import { login, signup } from "./actions";
-
-// export default function LoginPage() {
-//   return (
-//     <form>
-//       <label htmlFor='email'>Email:</label>
-//       <input id='email' name='email' type='email' required />
-//       <label htmlFor='password'>Password:</label>
-//       <input id='password' name='password' type='password' required />
-//       <button formAction={login}>Log in</button>
-//       <button formAction={signup}>Sign up</button>
-//     </form>
-//   );
-// }

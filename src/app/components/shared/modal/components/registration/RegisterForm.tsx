@@ -78,6 +78,7 @@ const RegisterForm = () => {
           id='password'
           name='password'
           placeholder='Пароль'
+          minLength={6}
           required
         />
 

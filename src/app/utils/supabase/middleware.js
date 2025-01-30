@@ -21,6 +21,13 @@ export async function updateSession(request) {
           });
           cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options));
         },
+        remove(name, options) {
+          try {
+            cookieStore.delete(name, options);
+          } catch (error) {
+            console.error("Error removing cookie:", error);
+          }
+        },
       },
     },
   );
