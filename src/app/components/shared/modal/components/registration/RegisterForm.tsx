@@ -85,7 +85,7 @@ const RegisterForm = () => {
         <button
           type='submit'
           formAction={signup}
-          className='mt-7 block rounded-full bg-standartGreen px-4 py-1.5 text-white'
+          className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'
         >
           Подтвердить регистрацию
         </button>

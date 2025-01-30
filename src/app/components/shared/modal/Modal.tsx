@@ -57,7 +57,7 @@ const Modal = ({ user }: ModalProps) => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded-md bg-white p-2.5 shadow-md ${openModal && "absolute right-0 top-0 w-full p-5"} ${!activeTab ? "max-w-[300px]" : "max-w-[820px]"} `}
+      className={`flex flex-col rounded-md bg-white p-2.5 shadow-md ${openModal && "absolute right-0 top-0 w-full p-5"} ${!activeTab ? "max-w-[300px]" : "max-w-[820px]"} `}
     >
       <div className='flex w-full justify-between'>
         {openModal && <Image src={userImage} alt='' loading='eager' aria-hidden='true' />}

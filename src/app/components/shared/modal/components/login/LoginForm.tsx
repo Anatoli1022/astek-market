@@ -22,8 +22,19 @@ const LoginForm = () => {
           minLength={6}
           className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
         />
-        <button formAction={login} type='submit'>
+        <button
+          formAction={login}
+          type='submit'
+          className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'
+        >
           Войти
+        </button>
+        <button
+          // formAction={login}
+          // type='submit'
+          className='block rounded-md bg-standartGreen/30 px-4 py-1.5 font-normal text-standartGreen'
+        >
+          Забыли пароль?
         </button>
       </form>
     </div>

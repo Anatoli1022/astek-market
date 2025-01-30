@@ -91,6 +91,7 @@ export default function Profile({ user }: { user: User | null }) {
       <div className='flex w-full flex-col gap-y-2.5'>
         <label className='text-sm font-medium opacity-40'>ФИО</label>
         <input
+          required
           value={fio || ""}
           placeholder={fio || ""}
           onChange={(e) => setFio(e.target.value)}
@@ -99,6 +100,7 @@ export default function Profile({ user }: { user: User | null }) {
         />
         <label className='text-sm font-medium opacity-40'>Почта</label>
         <input
+          required
           value={email || ""}
           onChange={(e) => setEmail(e.target.value)}
           type='text'
@@ -106,6 +108,7 @@ export default function Profile({ user }: { user: User | null }) {
         />
         <label className='text-sm font-medium opacity-40'>Телефон</label>
         <input
+          required
           value={phone || ""}
           onChange={(e) => setPhone(e.target.value)}
           type='text'
@@ -113,6 +116,7 @@ export default function Profile({ user }: { user: User | null }) {
         />
         <label className='text-sm font-medium opacity-40'>Город</label>
         <input
+          required
           value={city || ""}
           onChange={(e) => setCity(e.target.value)}
           type='text'
@@ -120,6 +124,7 @@ export default function Profile({ user }: { user: User | null }) {
         />
         <label className='text-sm font-medium opacity-40'>Компания</label>
         <input
+          required
           value={companyName || ""}
           onChange={(e) => setCompanyName(e.target.value)}
           type='text'
@@ -127,17 +132,26 @@ export default function Profile({ user }: { user: User | null }) {
         />
         <label className='text-sm font-medium opacity-40'>Деятельность компании</label>
         <input
+          required
           value={companyActivity || ""}
           onChange={(e) => setCompanyActivity(e.target.value)}
           type='text'
           className='rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
         />
         <button
-          className='mt-7 block rounded-full bg-standartGreen px-4 py-1.5 text-white'
+          className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'
           onClick={() => updateProfile({ fio, email, phone, city, companyName, companyActivity })}
           disabled={loading}
         >
-          {loading ? "Loading ..." : "Сохранить изменения"}
+          {loading ? "Отправка" : "Сохранить изменения"}
+        </button>
+
+        <button
+          // formAction={login}
+          // type='submit'
+          className='block rounded-md bg-standartGreen/30 px-4 py-1.5 font-normal text-standartGreen'
+        >
+          Забыли пароль?
         </button>
       </div>
     </div>

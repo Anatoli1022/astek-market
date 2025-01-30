@@ -25,10 +25,12 @@ const GetPrint = ({ slice }: GetPrintProps): JSX.Element => {
         <input
           type='text'
           placeholder='Имя'
+          required
           className='w-full max-w-96 rounded-md border border-[#cacaca80] bg-[#ebebeb80] px-5 py-[19px] text-sm'
         />
         <input
           type='text'
+          required
           className='w-full max-w-96 rounded-md border border-[#cacaca80] bg-[#ebebeb80] px-5 py-[19px] text-sm'
           placeholder='Телефон'
         />
