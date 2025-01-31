@@ -1,0 +1,67 @@
+{
+  "format": "custom",
+  "id": "aplication",
+  "label": "aplication",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2,heading3,heading4"
+        }
+      },
+      "text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "image_arrow": {
+        "type": "Image",
+        "config": {
+          "label": "image_arrow",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "app_store_link": {
+        "type": "Link",
+        "config": {
+          "label": "app store link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "google_play_store": {
+        "type": "Link",
+        "config": {
+          "label": "google play store",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  }
+}

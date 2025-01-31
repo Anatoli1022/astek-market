@@ -20,9 +20,6 @@
             "approach": {
               "type": "SharedSlice"
             },
-            "application": {
-              "type": "SharedSlice"
-            },
             "brand": {
               "type": "SharedSlice"
             }

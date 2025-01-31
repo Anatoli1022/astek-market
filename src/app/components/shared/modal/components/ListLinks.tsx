@@ -79,13 +79,9 @@ const ListLinks = ({ selectActiveTab, activeTab, user }: ListLinks) => {
           </div>
 
           <div>
-            <p className='text-sm text-lightGray'>Компания многопрофильной печати со своим производством и доставкой</p>
-            <form
-              className='mt-5'
-              //  action='/auth/signout'  передаем на какой путь нас перевести req
-              method='post'
-            >
-              <button className='text-sm text-lightGray' onClick={handleLogout}>
+            <p className='text-xs text-lightGray'>Компания многопрофильной печати со своим производством и доставкой</p>
+            <form className='mt-5' action='/' method='post'>
+              <button className='text-xs text-lightGray' onClick={handleLogout}>
                 Выйти из профиля
               </button>
             </form>

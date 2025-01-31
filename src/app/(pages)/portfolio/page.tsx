@@ -1,21 +1,10 @@
-// import TypesOfServices from "@/app/components/shared/typesOfServices/TypesOfServices";
-
-// const page = () => {
-//   return (
-//     <>
-//       <TypesOfServices />
-
-//     </>
-//   );
-// };
-
-// export default page;
-
 import { SliceZone } from "@prismicio/react";
 import { PrismicText } from "@prismicio/react";
 import { Metadata } from "next";
 
 import Cases from "@/app/components/pages/portfolio/Cases";
+import Application from "@/app/components/shared/application/Application";
+import TypesOfWork from "@/app/components/shared/typesOfWork/TypesOfWork";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
@@ -30,6 +19,8 @@ export default async function Page() {
       </h1>
       <Cases />
       <SliceZone slices={page.data.slices} components={components} />
+      <TypesOfWork />
+      <Application />
     </div>
   );
 }

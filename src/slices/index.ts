@@ -13,4 +13,5 @@ export const components = {
   map: dynamic(() => import("./Map")),
   products_list: dynamic(() => import("./ProductsList")),
   reviews: dynamic(() => import("./Reviews")),
+  types_of_work: dynamic(() => import("./TypesOfWork")),
 };

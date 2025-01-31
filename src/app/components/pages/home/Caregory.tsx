@@ -2,6 +2,7 @@
 import * as prismic from "@prismicio/client";
 import { Content } from "@prismicio/client";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import plus from "@/app/assets/plus.svg";
@@ -13,24 +14,16 @@ const Category = () => {
   const client = createClient();
   const [posts, setPosts] = useState<Content.CategoryDocument[]>([]); // Состояние для документа типа category
   const [tags, setTags] = useState<Content.FilterDocument[]>([]); // Состояние для документа типа filter
-  const [selectedTags, setSelectedTags] = useState<string | null>();
+  const [selectedTags, setSelectedTags] = useState<string | null>(null);
   const [nextPage, setNextPage] = useState<string | null>(null);
 
-  // Загружаем товары при монтировании компонента
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get("filter");
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await client.getByType("category", {
-          fetchOptions: {
-            next: { revalidate: 3600 },
-          },
-          pageSize: 2,
-        });
-
         const filter = await client.getByType("filter");
-        setPosts(response.results);
-        setNextPage(response.next_page);
-
         setTags(filter.results);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -40,26 +33,30 @@ const Category = () => {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    if (filterParam) {
+      handleTagClick(filterParam);
+    } else {
+      handleTagClick(null);
+    }
+  }, [filterParam]);
+
   // Функция для фильтрации товаров по тегу
   const handleTagClick = async (tag: string | null) => {
-    setSelectedTags(() => tag); // Обновляем выбранный тег
+    setSelectedTags(tag);
     if (tag) {
       const filteredPosts = await client.getAllByType("category", {
-        filters: [
-          prismic.filter.at("my.category.chapter", tag), // Фильтрация по chapter категории
-        ],
+        filters: [prismic.filter.at("my.category.chapter", tag)], // Образаемся к документу типа category ищеи в нем chapter
       });
       setPosts(filteredPosts);
       setNextPage(null); // В данном запросе "новые" страницы отсутствуют, поэтому обнуляем
     } else {
-      // Загружаем все посты, если фильтр не выбран
       const response = await client.getByType("category", { pageSize: 2 });
-      setPosts(response.results); // Устанавливаем все посты
+      setPosts(response.results);
       setNextPage(response.next_page); // Обновляем ссылку на следующую страницу, по скольку в данном запросе это значение есть
     }
   };
 
-  // Функция для подгрузки дополнительных товаров
   const loadMorePosts = async () => {
     if (!nextPage) return;
 
@@ -97,7 +94,6 @@ const Category = () => {
             </button>
           ))}
       </div>
-
       <ul className='grid grid-cols-2 gap-2.5'>
         {posts &&
           posts.map((post) => (
@@ -106,7 +102,6 @@ const Category = () => {
             </li>
           ))}
       </ul>
-
       {nextPage && (
         <div className='mt-10 text-center'>
           <button onClick={loadMorePosts} className='rounded border p-2.5 shadow-lg'>

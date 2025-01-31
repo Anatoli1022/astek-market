@@ -13,9 +13,6 @@
           "choices": {
             "map": {
               "type": "SharedSlice"
-            },
-            "application": {
-              "type": "SharedSlice"
             }
           }
         }

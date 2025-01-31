@@ -1,20 +1,15 @@
-import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { SliceComponentProps } from "@prismicio/react";
 import { PrismicText } from "@prismicio/react";
-/**
- * Props for `Application`.
- */
-export type ApplicationProps = SliceComponentProps<Content.ApplicationSlice>;
 
-/**
- * Component for "Application" Slices.
- */
-const Application = ({ slice }: ApplicationProps): JSX.Element => {
-  const { image_arrow, text, title, image, google_store_link, app_store_link } = slice.primary;
+import { createClient } from "@/prismicio";
 
+const Application = async () => {
+  const client = createClient();
+  const application = await client.getSingle("aplication");
+  const { data } = application;
+  const { image_arrow, text, title, image, app_store_link, google_play_store } = data;
   return (
-    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='relative mt-28'>
+    <section className='relative mt-28'>
       <div className='absolute left-16 top-16 max-w-[340px]'>
         <h2 className='text-4xl text-white'>
           <PrismicText field={title} />
@@ -31,7 +26,7 @@ const Application = ({ slice }: ApplicationProps): JSX.Element => {
             <PrismicNextImage field={image_arrow} loading='lazy' alt='' aria-hidden='true' />
           </PrismicNextLink>
           <PrismicNextLink
-            field={google_store_link}
+            field={google_play_store}
             className='flex items-center gap-x-2.5 rounded-md bg-black px-8 py-2.5 text-white'
           >
             <span className='text-sm'>Google Play</span>

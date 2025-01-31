@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap");
 
 body {
   font-optical-sizing: auto;
   font-style: normal;
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
 }

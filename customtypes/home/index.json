@@ -23,9 +23,6 @@
             "get_print": {
               "type": "SharedSlice"
             },
-            "application": {
-              "type": "SharedSlice"
-            },
             "approach": {
               "type": "SharedSlice"
             }

@@ -4,12 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutcompanyDocumentDataSlicesSlice =
-  | HowWeWorkSlice
-  | ImplementationSlice
-  | ApproachSlice
-  | ApplicationSlice
-  | BrandSlice;
+type AboutcompanyDocumentDataSlicesSlice = HowWeWorkSlice | ImplementationSlice | ApproachSlice | BrandSlice;
 
 /**
  * Content for AboutCompany documents
@@ -81,6 +76,92 @@ interface AboutcompanyDocumentData {
 export type AboutcompanyDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
   Simplify<AboutcompanyDocumentData>,
   "aboutcompany",
+  Lang
+>;
+
+/**
+ * Content for aplication documents
+ */
+interface AplicationDocumentData {
+  /**
+   * title field in *aplication*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * text field in *aplication*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * image_arrow field in *aplication*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.image_arrow
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_arrow: prismic.ImageField<never>;
+
+  /**
+   * image field in *aplication*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * app store link field in *aplication*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.app_store_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  app_store_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * google play store field in *aplication*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.google_play_store
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  google_play_store: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * aplication document from Prismic
+ *
+ * - **API ID**: `aplication`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AplicationDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<AplicationDocumentData>,
+  "aplication",
   Lang
 >;
 
@@ -232,6 +313,8 @@ export type CaseDocument<Lang extends string = string> = prismic.PrismicDocument
   Lang
 >;
 
+type CategoryDocumentDataSlicesSlice = TypesOfWorkSlice | ApplicationSlice;
+
 /**
  * Content for category documents
  */
@@ -268,6 +351,17 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   chapter: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *category*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategoryDocumentDataSlicesSlice>;
 }
 
 /**
@@ -285,7 +379,7 @@ export type CategoryDocument<Lang extends string = string> = prismic.PrismicDocu
   Lang
 >;
 
-type ContactDocumentDataSlicesSlice = MapSlice | ApplicationSlice;
+type ContactDocumentDataSlicesSlice = MapSlice;
 
 /**
  * Content for Contact documents
@@ -407,7 +501,7 @@ export interface FooterDocumentDataListCustomerInformationItem {
    * - **API ID Path**: footer.list_customer_information[].customer_information_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  customer_information_link: prismic.LinkField;
+  customer_information_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -432,7 +526,7 @@ export interface FooterDocumentDataListSocialItem {
    * - **API ID Path**: footer.list_social[].link_social
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_social: prismic.LinkField;
+  link_social: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -447,7 +541,7 @@ export interface FooterDocumentDataListContactsItem {
    * - **API ID Path**: footer.list_contacts[].link_contacts
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_contacts: prismic.LinkField;
+  link_contacts: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -462,7 +556,7 @@ export interface FooterDocumentDataListAppsItem {
    * - **API ID Path**: footer.list_apps[].link_app
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_app: prismic.LinkField;
+  link_app: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -551,13 +645,7 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice =
-  | ProductsListSlice
-  | ReviewsSlice
-  | BannerSlice
-  | GetPrintSlice
-  | ApplicationSlice
-  | ApproachSlice;
+type HomeDocumentDataSlicesSlice = ProductsListSlice | ReviewsSlice | BannerSlice | GetPrintSlice | ApproachSlice;
 
 /**
  * Content for Home documents
@@ -633,7 +721,7 @@ export interface NavigationDocumentDataListItem {
    * - **API ID Path**: navigation.list[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkField;
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -660,7 +748,7 @@ interface NavigationDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  logolink: prismic.LinkField;
+  logolink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * logo field in *navigation*
@@ -925,7 +1013,7 @@ export type ProductpageDocument<Lang extends string = string> = prismic.PrismicD
   Lang
 >;
 
-type ServicesDocumentDataSlicesSlice = ApplicationSlice;
+type ServicesDocumentDataSlicesSlice = never;
 
 /**
  * Content for Services documents
@@ -989,8 +1077,87 @@ export type ServicesDocument<Lang extends string = string> = prismic.PrismicDocu
   Lang
 >;
 
+/**
+ * Item in *TypesOfWork → list*
+ */
+export interface TypesofworkDocumentDataListItem {
+  /**
+   * image field in *TypesOfWork → list*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: typesofwork.list[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * text field in *TypesOfWork → list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: typesofwork.list[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Content for TypesOfWork documents
+ */
+interface TypesofworkDocumentData {
+  /**
+   * title field in *TypesOfWork*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: typesofwork.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * list field in *TypesOfWork*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: typesofwork.list[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<TypesofworkDocumentDataListItem>>;
+
+  /**
+   * arrow field in *TypesOfWork*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: typesofwork.arrow
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow: prismic.ImageField<never>;
+}
+
+/**
+ * TypesOfWork document from Prismic
+ *
+ * - **API ID**: `typesofwork`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TypesofworkDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<TypesofworkDocumentData>,
+  "typesofwork",
+  Lang
+>;
+
 export type AllDocumentTypes =
   | AboutcompanyDocument
+  | AplicationDocument
   | CaseDocument
   | CategoryDocument
   | ContactDocument
@@ -1001,7 +1168,8 @@ export type AllDocumentTypes =
   | PortfolioDocument
   | ProductDocument
   | ProductpageDocument
-  | ServicesDocument;
+  | ServicesDocument
+  | TypesofworkDocument;
 
 /**
  * Primary content in *Application → Default → Primary*
@@ -1045,7 +1213,7 @@ export interface ApplicationSliceDefaultPrimary {
    * - **API ID Path**: application.default.primary.app_store_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  app_store_link: prismic.LinkField;
+  app_store_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * google store link field in *Application → Default → Primary*
@@ -1055,7 +1223,7 @@ export interface ApplicationSliceDefaultPrimary {
    * - **API ID Path**: application.default.primary.google_store_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  google_store_link: prismic.LinkField;
+  google_store_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * image arrow field in *Application → Default → Primary*
@@ -1169,7 +1337,7 @@ export interface BannerSliceDefaultPrimary {
    * - **API ID Path**: banner.default.primary.link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkField;
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * arrow field in *Banner → Default → Primary*
@@ -1606,7 +1774,7 @@ export interface MapSliceDefaultPrimary {
    * - **API ID Path**: map.default.primary.mail
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  mail: prismic.LinkField;
+  mail: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * text_mail field in *Map → Default → Primary*
@@ -1636,7 +1804,7 @@ export interface MapSliceDefaultPrimary {
    * - **API ID Path**: map.default.primary.link_phone
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_phone: prismic.LinkField;
+  link_phone: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * text_phone field in *Map → Default → Primary*
@@ -1807,7 +1975,7 @@ export interface ReviewsSliceDefaultPrimaryListReviewsItem {
    * - **API ID Path**: reviews.default.primary.list_reviews[].link_case
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_case: prismic.LinkField;
+  link_case: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * link_text field in *Reviews → Default → Primary → list_reviews*
@@ -1842,7 +2010,7 @@ export interface ReviewsSliceDefaultPrimary {
    * - **API ID Path**: reviews.default.primary.link_portfolio
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link_portfolio: prismic.LinkField;
+  link_portfolio: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * arrow_link field in *Reviews → Default → Primary*
@@ -1908,6 +2076,93 @@ type ReviewsSliceVariation = ReviewsSliceDefault;
  */
 export type ReviewsSlice = prismic.SharedSlice<"reviews", ReviewsSliceVariation>;
 
+/**
+ * Item in *TypesOfWork → Default → Primary → list*
+ */
+export interface TypesOfWorkSliceDefaultPrimaryListItem {
+  /**
+   * image field in *TypesOfWork → Default → Primary → list*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: types_of_work.default.primary.list[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * text field in *TypesOfWork → Default → Primary → list*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: types_of_work.default.primary.list[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TypesOfWork → Default → Primary*
+ */
+export interface TypesOfWorkSliceDefaultPrimary {
+  /**
+   * title field in *TypesOfWork → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: types_of_work.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * list field in *TypesOfWork → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: types_of_work.default.primary.list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<TypesOfWorkSliceDefaultPrimaryListItem>>;
+
+  /**
+   * arrow field in *TypesOfWork → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: types_of_work.default.primary.arrow
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  arrow: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TypesOfWork Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TypesOfWorkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TypesOfWorkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TypesOfWork*
+ */
+type TypesOfWorkSliceVariation = TypesOfWorkSliceDefault;
+
+/**
+ * TypesOfWork Shared Slice
+ *
+ * - **API ID**: `types_of_work`
+ * - **Description**: TypesOfWork
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TypesOfWorkSlice = prismic.SharedSlice<"types_of_work", TypesOfWorkSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -1926,6 +2181,8 @@ declare module "@prismicio/client" {
       AboutcompanyDocument,
       AboutcompanyDocumentData,
       AboutcompanyDocumentDataSlicesSlice,
+      AplicationDocument,
+      AplicationDocumentData,
       CaseDocument,
       CaseDocumentData,
       CaseDocumentDataListItem,
@@ -1933,6 +2190,7 @@ declare module "@prismicio/client" {
       CaseDocumentDataSlicesSlice,
       CategoryDocument,
       CategoryDocumentData,
+      CategoryDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
@@ -1963,6 +2221,9 @@ declare module "@prismicio/client" {
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,
+      TypesofworkDocument,
+      TypesofworkDocumentData,
+      TypesofworkDocumentDataListItem,
       AllDocumentTypes,
       ApplicationSlice,
       ApplicationSliceDefaultPrimary,
@@ -2007,6 +2268,11 @@ declare module "@prismicio/client" {
       ReviewsSliceDefaultPrimary,
       ReviewsSliceVariation,
       ReviewsSliceDefault,
+      TypesOfWorkSlice,
+      TypesOfWorkSliceDefaultPrimaryListItem,
+      TypesOfWorkSliceDefaultPrimary,
+      TypesOfWorkSliceVariation,
+      TypesOfWorkSliceDefault,
     };
   }
 }

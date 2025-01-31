@@ -13,7 +13,7 @@ const ListNavigation = ({ navigation }: { navigation: Content.NavigationDocument
   const pathname = usePathname();
 
   return (
-    <ul className='flex w-full max-w-lg items-center gap-x-12'>
+    <ul className='flex items-center gap-x-12'>
       {data.list.map((item, i) => {
         const { link } = item;
 
