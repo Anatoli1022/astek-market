@@ -1,14 +1,21 @@
 "use client"; // может ли моя функция выполняться в клиенте?
+import { useActionState } from "react";
 
 import { signup } from "@/app/utils/actions";
 
 const RegisterForm = () => {
+  const [state, formAction, isPending] = useActionState(signup, {
+    error: "",
+    success: "",
+  });
+
+  const { error, success } = state;
   return (
     <div>
       <h3 className='text-xl text-lightGray'>Давай познакомимся!</h3>
       <p className='mt-2.5 text-xs text-lightGray'>Личный кабинет понадобиться для оформления и отслеживания заказа</p>
 
-      <form className='mt-7 flex w-full flex-col'>
+      <form action={formAction} className='mt-7 flex w-full flex-col'>
         {/* Запрос на ввод данных пользователя */}
 
         <label className='block text-sm font-medium opacity-40'>ФИО</label>
@@ -82,13 +89,21 @@ const RegisterForm = () => {
           required
         />
 
-        <button
-          type='submit'
-          formAction={signup}
-          className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'
-        >
-          Подтвердить регистрацию
+        <button type='submit' className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'>
+          Подтвердить регистрацию {isPending && <span></span>}
         </button>
+
+        {error && (
+          <div role='alert' className='alert alert-error'>
+            <span>{error}</span>
+          </div>
+        )}
+
+        {success && (
+          <div role='alert' className='alert alert-info'>
+            <span>{success}</span>
+          </div>
+        )}
       </form>
     </div>
   );
