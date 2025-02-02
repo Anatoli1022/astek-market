@@ -2,16 +2,18 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Image from "next/image";
 
 import line from "@/app/assets/lineHeader.svg";
-import shopping from "@/app/assets/shopping.svg";
 import { createServerUser } from "@/app/utils/supabase/server";
 import { createClient } from "@/prismicio";
 
+import Basket from "../basket/Basket";
 import Modal from "../modal/Modal";
 import ListNavigation from "./components/ListNavigation";
 
 const Header = async () => {
   const client = createClient();
   const navigation = await client.getSingle("navigation");
+
+  const typesofwork = await client.getSingle("typesofwork");
   const { data } = navigation;
 
   // Проверяем сессию пользователя на сервере
@@ -34,9 +36,7 @@ const Header = async () => {
           <ListNavigation navigation={navigation} />
 
           <div className='flex items-center gap-x-2.5'>
-            <button className='rounded-md bg-white p-2.5 shadow-md'>
-              <Image src={shopping} alt='' loading='eager' aria-hidden='true' />
-            </button>
+            <Basket typesofwork={typesofwork} />
             {/* Передаем данные пользователя в модальное окно */}
             <Modal user={user} />
           </div>

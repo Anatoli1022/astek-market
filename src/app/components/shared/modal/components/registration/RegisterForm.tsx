@@ -1,6 +1,6 @@
 "use client"; // может ли моя функция выполняться в клиенте?
 
-import { signup } from "./actions";
+import { signup } from "@/app/utils/actions";
 
 const RegisterForm = () => {
   return (

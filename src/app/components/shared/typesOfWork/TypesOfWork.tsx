@@ -1,5 +1,5 @@
 import { PrismicNextImage } from "@prismicio/next";
-import Link from "next/link"; // Импортируем Link из next/link
+import Link from "next/link";
 
 import { createClient } from "@/prismicio";
 

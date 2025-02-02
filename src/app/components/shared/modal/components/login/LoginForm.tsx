@@ -1,5 +1,6 @@
-import { login } from "./actions";
+import Link from "next/link";
 
+import { login } from "@/app/utils/actions";
 const LoginForm = () => {
   return (
     <div>
@@ -32,13 +33,15 @@ const LoginForm = () => {
         >
           Войти
         </button>
-        <button
-          // formAction={login}
-          // type='submit'
-          className='mt-2.5 block rounded-md bg-standartGreen/30 px-4 py-1.5 text-sm font-normal text-standartGreen'
-        >
-          Забыли пароль?
-        </button>
+
+        <p className='mt-2'>
+          <Link
+            href='/forgot-password'
+            className='mt-2.5 block rounded-md bg-standartGreen/30 px-4 py-1.5 text-sm font-normal text-standartGreen'
+          >
+            Забыли пароль?
+          </Link>
+        </p>
       </form>
     </div>
   );
