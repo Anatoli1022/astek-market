@@ -1,30 +1,38 @@
-"use client"; // может ли моя функция выполняться в клиенте?
-import { useActionState } from "react";
+"use client";
+
+import { useState } from "react";
 
 import { signup } from "@/app/utils/actions";
 
 const RegisterForm = () => {
-  const [state, formAction, isPending] = useActionState(signup, {
-    error: "",
-    success: "",
-  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const { error, success } = state;
+  const handleSubmit = async (formData: FormData) => {
+    const result = await signup(formData);
+
+    if (result.error) {
+      setError(result.error);
+      setSuccess("");
+    } else {
+      setError("");
+      setSuccess(result.success);
+    }
+  };
+
   return (
     <div>
       <h3 className='text-xl text-lightGray'>Давай познакомимся!</h3>
-      <p className='mt-2.5 text-xs text-lightGray'>Личный кабинет понадобиться для оформления и отслеживания заказа</p>
+      <p className='mt-2.5 text-xs text-lightGray'>Личный кабинет понадобится для оформления и отслеживания заказа</p>
 
-      <form action={formAction} className='mt-7 flex w-full flex-col'>
+      <form action={handleSubmit} className='mt-7 flex w-full flex-col'>
         {/* Запрос на ввод данных пользователя */}
-
         <label className='block text-sm font-medium opacity-40'>ФИО</label>
         <input
           className='mt-2.5 w-full rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
           type='text'
           name='fio'
           placeholder='ФИО'
-          id='fio'
           required
         />
 
@@ -34,7 +42,6 @@ const RegisterForm = () => {
           type='text'
           name='phone'
           placeholder='Номер телефона'
-          id='phone'
           required
         />
 
@@ -44,7 +51,6 @@ const RegisterForm = () => {
           type='email'
           name='email'
           placeholder='Почта'
-          id='email'
           required
         />
 
@@ -54,7 +60,6 @@ const RegisterForm = () => {
           type='text'
           name='city'
           placeholder='Город'
-          id='city'
           required
         />
 
@@ -64,7 +69,6 @@ const RegisterForm = () => {
           type='text'
           name='companyName'
           placeholder='Название компании'
-          id='companyName'
           required
         />
 
@@ -74,7 +78,6 @@ const RegisterForm = () => {
           type='text'
           name='companyActivity'
           placeholder='Вид деятельности компании'
-          id='companyActivity'
           required
         />
 
@@ -82,7 +85,6 @@ const RegisterForm = () => {
         <input
           className='mt-2.5 w-full rounded-lg bg-black/10 px-2.5 py-1.5 text-sm'
           type='password'
-          id='password'
           name='password'
           placeholder='Пароль'
           minLength={6}
@@ -90,17 +92,17 @@ const RegisterForm = () => {
         />
 
         <button type='submit' className='mt-7 block rounded-md bg-standartGreen px-4 py-1.5 font-normal text-white'>
-          Подтвердить регистрацию {isPending && <span></span>}
+          Подтвердить регистрацию
         </button>
 
         {error && (
-          <div role='alert' className='alert alert-error'>
+          <div role='alert' className='alert alert-error mt-4'>
             <span>{error}</span>
           </div>
         )}
 
         {success && (
-          <div role='alert' className='alert alert-info'>
+          <div role='alert' className='alert alert-info mt-4'>
             <span>{success}</span>
           </div>
         )}

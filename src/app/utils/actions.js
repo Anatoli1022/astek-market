@@ -64,7 +64,11 @@ const login = async (formData) => {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    redirect("/error");
+    console.log("error", error);
+    return {
+      success: "",
+      error: "Пожалуйста, проверьте введенные данные и попробуйте снова",
+    };
   }
 
   revalidatePath("/", "layout");
@@ -84,25 +88,28 @@ const signup = async (formData) => {
   const companyActivity = formData.get("companyActivity");
 
   // Шаг 1: Регистрация пользователя в таблице auth
-  const { data, error: signUpError } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
 
+  // Логируем ошибку, если она возникла
   if (error) {
-    console.log("error", signUpError);
+    console.log("Ошибка при регистрации:", error);
 
     return {
       success: "",
-      // error: error.message,
       error: "Пожалуйста, проверьте введенные данные и попробуйте снова",
     };
   }
 
+  // Если регистрация успешна, логируем ответ
+  console.log("Регистрация успешна:", data);
+
   // Шаг 2: Добавляем дополнительные данные в таблицу users
   const { error: insertError } = await supabase.from("users").insert([
     {
-      id: data.user.id, // ID пользователя, полученный после регистрации
+      id: data.user.id,
       email: data.user.email,
       fio: fio,
       phone: phone,
@@ -112,12 +119,11 @@ const signup = async (formData) => {
     },
   ]);
 
-  if (error) {
-    console.log("error", insertError);
-
+  // Логируем ошибку вставки данных, если она возникла
+  if (insertError) {
+    console.log("Ошибка при вставке данных в таблицу users:", insertError);
     return {
       success: "",
-      // error: error.message,
       error: "Пожалуйста, проверьте введенные данные и попробуйте снова",
     };
   }
@@ -126,11 +132,6 @@ const signup = async (formData) => {
     success: "Пожалуйста, проверьте свою электронную почту",
     error: "",
   };
-  // revalidatePath("/", "layout")
-
-  // Шаг 3: Редирект на страницу входа
-
-  // redirect("/")
 };
 
 export { login, sendResetPasswordEmail, signup, updatePassword };

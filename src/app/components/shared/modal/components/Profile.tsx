@@ -151,7 +151,7 @@ export default function Profile({ user }: { user: User | null }) {
           // type='submit'
           className='block rounded-md bg-standartGreen/30 px-4 py-1.5 font-normal text-standartGreen'
         >
-          Забыли пароль?
+          Изменить пароль
         </button>
       </div>
     </div>
