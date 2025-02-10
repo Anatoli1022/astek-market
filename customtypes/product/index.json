@@ -21,11 +21,82 @@
           "customtypes": ["category"]
         }
       },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
       "text": {
         "type": "Text",
         "config": {
           "label": "text",
           "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "minimal": {
+        "type": "Group",
+        "config": {
+          "label": "minimal",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "medium": {
+        "type": "Group",
+        "config": {
+          "label": "medium",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "high": {
+        "type": "Group",
+        "config": {
+          "label": "high",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "imageproduct": {
+        "type": "Image",
+        "config": {
+          "label": "imageProduct",
+          "constraint": {},
+          "thumbnails": []
         }
       },
       "slices": {

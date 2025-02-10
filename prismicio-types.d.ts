@@ -777,7 +777,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
   Lang
 >;
 
-type PortfolioDocumentDataSlicesSlice = ApplicationSlice;
+type PortfolioDocumentDataSlicesSlice = never;
 
 /**
  * Content for portfolio documents
@@ -852,6 +852,51 @@ export type PortfolioDocument<Lang extends string = string> = prismic.PrismicDoc
   Lang
 >;
 
+/**
+ * Item in *product → minimal*
+ */
+export interface ProductDocumentDataMinimalItem {
+  /**
+   * service field in *product → minimal*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.minimal[].service
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  service: prismic.KeyTextField;
+}
+
+/**
+ * Item in *product → medium*
+ */
+export interface ProductDocumentDataMediumItem {
+  /**
+   * service field in *product → medium*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.medium[].service
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  service: prismic.KeyTextField;
+}
+
+/**
+ * Item in *product → high*
+ */
+export interface ProductDocumentDataHighItem {
+  /**
+   * service field in *product → high*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.high[].service
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  service: prismic.KeyTextField;
+}
+
 type ProductDocumentDataSlicesSlice = never;
 
 /**
@@ -870,6 +915,17 @@ interface ProductDocumentData {
   link: prismic.ContentRelationshipField<"category">;
 
   /**
+   * title field in *product*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
    * text field in *product*
    *
    * - **Field Type**: Text
@@ -879,6 +935,61 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   text: prismic.KeyTextField;
+
+  /**
+   * image field in *product*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * minimal field in *product*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.minimal[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  minimal: prismic.GroupField<Simplify<ProductDocumentDataMinimalItem>>;
+
+  /**
+   * medium field in *product*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.medium[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  medium: prismic.GroupField<Simplify<ProductDocumentDataMediumItem>>;
+
+  /**
+   * high field in *product*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.high[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  high: prismic.GroupField<Simplify<ProductDocumentDataHighItem>>;
+
+  /**
+   * imageProduct field in *product*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.imageproduct
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imageproduct: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *product*
@@ -935,81 +1046,6 @@ interface ProductDocumentData {
 export type ProductDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
   Simplify<ProductDocumentData>,
   "product",
-  Lang
->;
-
-type ProductpageDocumentDataSlicesSlice = never;
-
-/**
- * Content for productPage documents
- */
-interface ProductpageDocumentData {
-  /**
-   * text field in *productPage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: productpage.text
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  text: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *productPage*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: productpage.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<ProductpageDocumentDataSlicesSlice> /**
-   * Meta Title field in *productPage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: productpage.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *productPage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: productpage.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *productPage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: productpage.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-}
-
-/**
- * productPage document from Prismic
- *
- * - **API ID**: `productpage`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProductpageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
-  Simplify<ProductpageDocumentData>,
-  "productpage",
   Lang
 >;
 
@@ -1167,7 +1203,6 @@ export type AllDocumentTypes =
   | NavigationDocument
   | PortfolioDocument
   | ProductDocument
-  | ProductpageDocument
   | ServicesDocument
   | TypesofworkDocument;
 
@@ -2214,10 +2249,10 @@ declare module "@prismicio/client" {
       PortfolioDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
+      ProductDocumentDataMinimalItem,
+      ProductDocumentDataMediumItem,
+      ProductDocumentDataHighItem,
       ProductDocumentDataSlicesSlice,
-      ProductpageDocument,
-      ProductpageDocumentData,
-      ProductpageDocumentDataSlicesSlice,
       ServicesDocument,
       ServicesDocumentData,
       ServicesDocumentDataSlicesSlice,

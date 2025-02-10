@@ -1,5 +1,6 @@
 "use client";
 import { type User } from "@supabase/supabase-js";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { createClientUser } from "@/app/utils/supabase/client";
@@ -146,13 +147,12 @@ export default function Profile({ user }: { user: User | null }) {
           {loading ? "Отправка" : "Сохранить изменения"}
         </button>
 
-        <button
-          // formAction={login}
-          // type='submit'
-          className='block rounded-md bg-standartGreen/30 px-4 py-1.5 font-normal text-standartGreen'
+        <Link
+          href='/forgot-password'
+          className='mt-2.5 block rounded-md bg-standartGreen/30 px-4 py-1.5 text-center text-sm font-normal text-standartGreen'
         >
           Изменить пароль
-        </button>
+        </Link>
       </div>
     </div>
   );

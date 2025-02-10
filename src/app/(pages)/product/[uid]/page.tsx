@@ -1,56 +1,46 @@
-// import * as prismic from "@prismicio/client";
-// import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-// import { PrismicText } from "@prismicio/react";
+import { asImageSrc, isFilled } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import HeroProduct from "@/app/components/pages/product/HeroProduct";
 import { createClient } from "@/prismicio";
-// import { SliceZone } from "@prismicio/react";
-// import { components } from "@/slices";
-// import { revalidatePath } from "next/cache";
+import { components } from "@/slices";
 
 type Params = { uid: string };
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-  const client = createClient();
+export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
-  // Здесь нужно убедиться, что параметры обрабатываются правильно.
+  const client = createClient();
+
+  const page = await client.getByUID("product", uid);
+
+  return (
+    <>
+      <HeroProduct documentProduct={page} />
+      <SliceZone slices={page.data.slices} components={components} />
+    </>
+  );
+}
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { uid } = await params;
+  const client = createClient();
   const page = await client.getByUID("product", uid).catch(() => notFound());
 
   return {
-    // title: prismic.asText(page.data.title),
+    title: page.data.meta_title,
     description: page.data.meta_description,
     openGraph: {
-      title: page.data.meta_title || undefined,
-      images: [
-        {
-          url: page.data.meta_image.url || "",
-        },
-      ],
+      title: isFilled.keyText(page.data.meta_title) ? page.data.meta_title : undefined,
+      description: isFilled.keyText(page.data.meta_description) ? page.data.meta_description : undefined,
+      images: isFilled.image(page.data.meta_image) ? [asImageSrc(page.data.meta_image)] : undefined,
     },
   };
 }
 
-export default async function Page({ params }: { params: Promise<Params> }) {
-  // const revalidate = async (url: string) => {
-  //   // Mark this as async
-  //   "use server";
-  //   await revalidatePath(url, "page"); // Ensure revalidatePath is awaited
-  // };
-
-  const { uid } = await params;
-  const client = createClient();
-
-  const category = await client.getByUID("product", uid);
-
-  // console.log(category);
-
-  return <section>{category.id}</section>;
-}
-
 export async function generateStaticParams() {
   const client = createClient();
-
   const pages = await client.getAllByType("product");
 
   return pages.map((page) => {
