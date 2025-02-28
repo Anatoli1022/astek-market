@@ -20,7 +20,7 @@ const Cases = () => {
         fetchOptions: {
           next: { revalidate: 3600 },
         },
-        pageSize: 1, // Количество товаров на странице
+        pageSize: 2, // Количество товаров на странице изменить на 8
         page: 1, // Начальная страница
       });
 
@@ -43,8 +43,8 @@ const Cases = () => {
   };
 
   return (
-    <section className='mt-16'>
-      <ul className='grid grid-cols-2 gap-2.5'>
+    <section className='mt-16 md:mt-12'>
+      <ul className='grid grid-cols-2 gap-2.5 md:grid-cols-1 md:gap-5'>
         {posts.map((post) => (
           <li key={post.id}>
             <CaseCard post={post} />
@@ -64,13 +64,3 @@ const Cases = () => {
 };
 
 export default Cases;
-
-// export async function generateStaticParams() {
-//   const client = createClient();
-
-//   const pages = await client.getAllByType("case");
-
-//   return pages.map((page) => {
-//     return { uid: page.uid };
-//   });
-// }

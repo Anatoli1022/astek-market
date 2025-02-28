@@ -17,14 +17,14 @@ const HistoryOrder = () => {
             <span className='block text-sm font-normal'>Тираж: 1000</span>
             <span className='mt-1.5 block text-sm font-normal'>Стоимость: 3.000р</span>
           </div>
-        </li>{" "}
+        </li>
         <li className='flex gap-x-20 border-b border-black/20 pb-5 last:border-none'>
           <p className='font-normal'>Christenson Surfboards</p>
           <div>
             <span className='block text-sm font-normal'>Тираж: 1000</span>
             <span className='mt-1.5 block text-sm font-normal'>Стоимость: 3.000р</span>
           </div>
-        </li>{" "}
+        </li>
         <li className='flex gap-x-20 border-b border-black/20 pb-5 last:border-none'>
           <p className='font-normal'>Christenson Surfboards</p>
           <div>

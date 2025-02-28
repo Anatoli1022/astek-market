@@ -30,14 +30,6 @@
             "multi": "paragraph"
           }
         },
-        "image_box": {
-          "type": "Image",
-          "config": {
-            "label": "image_box",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "list": {
           "type": "Group",
           "config": {
@@ -49,6 +41,14 @@
                 "config": {
                   "label": "text_teg",
                   "placeholder": ""
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
                 }
               },
               "title_box": {

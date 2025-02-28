@@ -12,3 +12,20 @@
     width: 100%;
   }
 }
+
+@media (max-width: 767px) {
+  .progress {
+    animation: 6.3s linear slide;
+    background: black;
+    opacity: 0.5;
+  }
+
+  @keyframes slide {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import arrow from "@/app/assets/arrow-green.svg";
+import line from "@/app/assets/lineDark.svg";
 
 import { data } from "./data";
 interface HeroProductProps {
@@ -18,7 +19,7 @@ const HeroProduct = ({ documentProduct }: HeroProductProps) => {
   const productData = [minimal, medium, high];
 
   return (
-    <section className='flex justify-between'>
+    <section className='flex justify-center gap-x-28'>
       <div>
         <h1 className='text-4xl'>{title}</h1>
         <p className='mt-2.5 max-w-[400px]'>{text}</p>
@@ -26,21 +27,22 @@ const HeroProduct = ({ documentProduct }: HeroProductProps) => {
           <PrismicNextImage
             field={imageproduct}
             sizes='100vw'
-            className='w-full rounded-2xl object-cover'
+            className='max-h-[800px] w-full rounded-2xl object-cover'
             fallbackAlt=''
             loading='eager'
             priority
           />
         </div>
 
-        <div className='mt-8 flex flex-wrap gap-x-2.5'>
+        <div className='relative mt-12 flex flex-wrap gap-x-2.5 pt-8'>
+          <Image src={line} alt='' className='absolute top-0 w-full' loading='eager' aria-hidden='true' />
           <p>Если у вас есть вопросы, можете обратиться к нашему менеджеру</p>
           <Link href='/contact' className='border-b-2 border-black opacity-65'>
             Оставить заявку на звонок
           </Link>
         </div>
       </div>
-      <div className='flex w-[600px] flex-col justify-between rounded-2xl bg-[#212121] p-10'>
+      <div className='flex max-h-[900px] w-full max-w-[600px] flex-col justify-between rounded-2xl bg-[#212121] p-10 xl:p-5'>
         <div>
           <div className='flex justify-between'>
             <h2 className='text-2xl text-white'>Расчет стоимости</h2>
@@ -109,7 +111,7 @@ const HeroProduct = ({ documentProduct }: HeroProductProps) => {
           <span className='mt-5 block text-center text-6xl font-bold text-white'>0 ₽</span>
           <span className='block text-center text-[#515151]'>Стоимость реализации вашего заказа</span>
         </div>
-        <button className='mt-36 block w-full rounded-md bg-standartGreen px-10 py-5 text-2xl font-normal text-white'>
+        <button className='block w-full rounded-md bg-standartGreen px-10 py-5 text-2xl font-normal text-white xl:mt-12 xl:py-2.5 xl:text-lg'>
           Добавить в корзину
         </button>
       </div>

@@ -1,7 +1,7 @@
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Image from "next/image";
 
-import line from "@/app/assets/lineHeader.svg";
+import line from "@/app/assets/lineDark.svg";
 import { createServerUser } from "@/app/utils/supabase/server";
 import { createClient } from "@/prismicio";
 
@@ -40,7 +40,7 @@ const Header = async () => {
             {/* Передаем данные пользователя в модальное окно */}
             <Modal user={user} />
           </div>
-        </nav>{" "}
+        </nav>
       </div>
     </header>
   );

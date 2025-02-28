@@ -22,9 +22,6 @@
             },
             "get_print": {
               "type": "SharedSlice"
-            },
-            "approach": {
-              "type": "SharedSlice"
             }
           }
         }

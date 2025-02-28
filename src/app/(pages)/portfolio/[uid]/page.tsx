@@ -16,11 +16,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   return (
     <section>
-      <h1 className='text-6xl'>
+      <h1 className='text-6xl md:text-3xl'>
         <PrismicText field={data.title} />
       </h1>
 
-      <ul className='mt-8 flex justify-between gap-x-5 font-normal'>
+      <ul className='mt-8 flex justify-between gap-x-5 font-normal md:mt-6 md:flex-col md:gap-y-4'>
         {data.list.map((item, i) => (
           <li key={i}>
             <h2 className='text-sm opacity-30'>
@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         ))}
       </ul>
 
-      <ul className='mt-5 flex flex-wrap gap-x-2.5 gap-y-5'>
+      <ul className='mt-5 flex flex-wrap gap-x-2.5 gap-y-5 md:mt-10'>
         {data.list_images.map((item, i) => (
           <li key={i}>
             <PrismicNextImage field={item.image} alt='' loading='eager' className='rounded-2xl' />

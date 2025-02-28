@@ -11,7 +11,7 @@ export type ApproachProps = SliceComponentProps<Content.ApproachSlice>;
  */
 const Approach = ({ slice }: ApproachProps): JSX.Element => {
   return (
-    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='mt-80'>
+    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='mt-80 lg:hidden'>
       <span className='m-auto block max-w-14 text-[#1E1E1E] opacity-30'>
         <PrismicText field={slice.primary.text} />
       </span>

@@ -45,15 +45,15 @@ const Similar = async ({ currentTags }: { currentTags: string[] }) => {
   });
 
   return (
-    <section className='mt-52'>
+    <section className='mt-52 lg:mt-32'>
       {/* {loading ? (
         // <Skeleton />
         <>Загрузка...</>
       ) : (
         
       )} */}
-
-      <ul className='grid grid-cols-2 gap-2.5'>
+      <p className='hidden md:block'>Похожие кейсы</p>
+      <ul className='grid grid-cols-2 gap-2.5 md:mt-5 md:grid-cols-1'>
         {response.results.map((post) => (
           <li key={post.id}>
             <CaseCard post={post} />

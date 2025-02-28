@@ -36,11 +36,11 @@ const Brand = ({ slice }: BrandProps): JSX.Element => {
           return (
             <SwiperSlide key={index}>
               <div className='relative'>
-                <div className='absolute left-16 top-16 max-w-[534px] bg-white p-4'>
-                  <h2 className='text-4xl'>
+                <div className='absolute left-16 top-16 max-w-[534px] rounded-xl bg-white p-4 md:left-5 md:top-5'>
+                  <h2 className='text-4xl md:text-2xl'>
                     <PrismicText field={item.title} />
                   </h2>
-                  <p className='mt-24 text-sm'>
+                  <p className='mt-24 text-sm md:mt-6'>
                     <PrismicText field={item.text} />
                   </p>
 
@@ -49,9 +49,11 @@ const Brand = ({ slice }: BrandProps): JSX.Element => {
                       <div
                         // onClick={setActiveIndex} добавить изменения индекса по клику
                         key={indexProgress}
-                        className={`h-0.5 w-full ${activeIndex > indexProgress ? "bg-black/50" : "bg-black/30"}`}
+                        className={`h-0.5 w-full md:max-w-14 ${activeIndex > indexProgress ? "bg-black/50" : "bg-black/30"}`}
                       >
-                        <div className={`h-0.5 w-full ${activeIndex === indexProgress ? "progress" : ""}`}></div>
+                        <div
+                          className={`h-0.5 w-full md:max-w-14 ${activeIndex === indexProgress ? "progress" : ""}`}
+                        ></div>
                       </div>
                     ))}
                   </div>

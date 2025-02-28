@@ -13,7 +13,7 @@ export type ProductsListProps = SliceComponentProps<Content.ProductsListSlice>;
  */
 const ProductsList = ({ slice }: ProductsListProps): JSX.Element => {
   return (
-    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='mt-32'>
+    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className='mt-32 md:mt-20'>
       <Category />
     </section>
   );

@@ -19,6 +19,13 @@
           "placeholder": ""
         }
       },
+      "text": {
+        "type": "Text",
+        "config": {
+          "label": "text",
+          "placeholder": ""
+        }
+      },
       "image": {
         "type": "Image",
         "config": {
@@ -32,20 +39,6 @@
         "config": {
           "label": "chapter",
           "placeholder": ""
-        }
-      },
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
-        "config": {
-          "choices": {
-            "types_of_work": {
-              "type": "SharedSlice"
-            },
-            "application": {
-              "type": "SharedSlice"
-            }
-          }
         }
       }
     }

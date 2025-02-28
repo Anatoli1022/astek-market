@@ -3,7 +3,6 @@ import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
 
 import Application from "@/app/components/shared/application/Application";
-import TypesOfWork from "@/app/components/shared/typesOfWork/TypesOfWork";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
@@ -14,7 +13,6 @@ export default async function Page() {
   return (
     <>
       <SliceZone slices={page.data.slices} components={components} />
-      <TypesOfWork />
       <Application />
     </>
   );

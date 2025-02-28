@@ -32,6 +32,14 @@
           "thumbnails": []
         }
       },
+      "mobileimage": {
+        "type": "Image",
+        "config": {
+          "label": "mobileImage",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "image": {
         "type": "Image",
         "config": {

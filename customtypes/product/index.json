@@ -43,6 +43,22 @@
           "thumbnails": []
         }
       },
+      "list_information": {
+        "type": "Group",
+        "config": {
+          "label": "list_information",
+          "repeat": true,
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "text",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "minimal": {
         "type": "Group",
         "config": {

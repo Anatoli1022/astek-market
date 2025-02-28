@@ -6,7 +6,7 @@ const OrderStatus = () => {
   return (
     <div>
       <div className='flex gap-x-2.5'>
-        <span className='text-xs font-normal'>Актуальный заказ</span>{" "}
+        <span className='text-xs font-normal'>Актуальный заказ</span>
         <span className='text-xs font-normal opacity-30'>28.10.2024</span>
       </div>
       <p className='mt-2.5 text-xl text-lightGray'>
@@ -27,7 +27,7 @@ const OrderStatus = () => {
                 <span className='font-normal'>€1,045</span>
               </div>
             </div>
-          </li>{" "}
+          </li>
           <li className='flex items-center gap-x-5 border-b border-black/20 pb-5 last:border-none'>
             <div>
               <Image src={bob} alt='' className='max-w-24 rounded-lg' loading='lazy' aria-hidden='true' />

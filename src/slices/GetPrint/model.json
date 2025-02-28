@@ -21,13 +21,6 @@
             "multi": "heading1"
           }
         },
-        "title_text": {
-          "type": "Text",
-          "config": {
-            "label": "title_text",
-            "placeholder": "хочу заказать печать"
-          }
-        },
         "buttontext": {
           "type": "Text",
           "config": {

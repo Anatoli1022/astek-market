@@ -15,6 +15,21 @@
           "multi": "heading1"
         }
       },
+      "subtext": {
+        "type": "Text",
+        "config": {
+          "label": "subtext",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

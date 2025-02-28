@@ -117,6 +117,17 @@ interface AplicationDocumentData {
   image_arrow: prismic.ImageField<never>;
 
   /**
+   * mobileImage field in *aplication*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aplication.mobileimage
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  mobileimage: prismic.ImageField<never>;
+
+  /**
    * image field in *aplication*
    *
    * - **Field Type**: Image
@@ -313,8 +324,6 @@ export type CaseDocument<Lang extends string = string> = prismic.PrismicDocument
   Lang
 >;
 
-type CategoryDocumentDataSlicesSlice = TypesOfWorkSlice | ApplicationSlice;
-
 /**
  * Content for category documents
  */
@@ -329,6 +338,17 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
+  /**
+   * text field in *category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
 
   /**
    * image field in *category*
@@ -351,17 +371,6 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   chapter: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *category*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: category.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<CategoryDocumentDataSlicesSlice>;
 }
 
 /**
@@ -645,7 +654,7 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice = ProductsListSlice | ReviewsSlice | BannerSlice | GetPrintSlice | ApproachSlice;
+type HomeDocumentDataSlicesSlice = ProductsListSlice | ReviewsSlice | BannerSlice | GetPrintSlice;
 
 /**
  * Content for Home documents
@@ -795,6 +804,28 @@ interface PortfolioDocumentData {
   title: prismic.RichTextField;
 
   /**
+   * subtext field in *portfolio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.subtext
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtext: prismic.KeyTextField;
+
+  /**
+   * image field in *portfolio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *portfolio*
    *
    * - **Field Type**: Slice Zone
@@ -851,6 +882,21 @@ export type PortfolioDocument<Lang extends string = string> = prismic.PrismicDoc
   "portfolio",
   Lang
 >;
+
+/**
+ * Item in *product → list_information*
+ */
+export interface ProductDocumentDataListInformationItem {
+  /**
+   * text field in *product → list_information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.list_information[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
 
 /**
  * Item in *product → minimal*
@@ -946,6 +992,17 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * list_information field in *product*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.list_information[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list_information: prismic.GroupField<Simplify<ProductDocumentDataListInformationItem>>;
 
   /**
    * minimal field in *product*
@@ -1506,16 +1563,6 @@ export interface GetPrintSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * title_text field in *GetPrint → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: хочу заказать печать
-   * - **API ID Path**: get_print.default.primary.title_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title_text: prismic.KeyTextField;
-
-  /**
    * buttonText field in *GetPrint → Default → Primary*
    *
    * - **Field Type**: Text
@@ -1588,6 +1635,16 @@ export interface HowWeWorkSliceDefaultPrimaryListItem {
   text_teg: prismic.KeyTextField;
 
   /**
+   * image field in *HowWeWork → Default → Primary → list*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: how_we_work.default.primary.list[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
    * title_box field in *HowWeWork → Default → Primary → list*
    *
    * - **Field Type**: Rich Text
@@ -1631,16 +1688,6 @@ export interface HowWeWorkSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   text_center: prismic.RichTextField;
-
-  /**
-   * image_box field in *HowWeWork → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: how_we_work.default.primary.image_box
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image_box: prismic.ImageField<never>;
 
   /**
    * list field in *HowWeWork → Default → Primary*
@@ -2225,7 +2272,6 @@ declare module "@prismicio/client" {
       CaseDocumentDataSlicesSlice,
       CategoryDocument,
       CategoryDocumentData,
-      CategoryDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
@@ -2249,6 +2295,7 @@ declare module "@prismicio/client" {
       PortfolioDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
+      ProductDocumentDataListInformationItem,
       ProductDocumentDataMinimalItem,
       ProductDocumentDataMediumItem,
       ProductDocumentDataHighItem,

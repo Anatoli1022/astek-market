@@ -14,11 +14,6 @@
 					}
 				]
 			},
-			"title_text": {
-				"__TYPE__": "FieldContent",
-				"value": "your",
-				"type": "Text"
-			},
 			"buttontext": {
 				"__TYPE__": "FieldContent",
 				"value": "problem",
